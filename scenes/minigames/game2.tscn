@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dmx33eayolb7t"]
+[gd_scene format=3 uid="uid://d37dtrsy7g2hg"]
 
-[node name="Main" type="Node2D"]
+[node name="Game1" type="Node2D"]
 
 [node name="UIParent" type="Control" parent="."]
 layout_mode = 3
@@ -16,6 +16,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 90
-text = "Main"
+text = "Game 2"
 fit_content = true
 scroll_active = false

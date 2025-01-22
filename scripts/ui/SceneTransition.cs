@@ -10,13 +10,13 @@ namespace WGJ25
 		// Change the scene and play a transition
 		public async void ChangeScene(string target)
 		{
-			// AnimationPlayer anim = GetNode<AnimationPlayer>("AnimationPlayer");
-			// anim.Play("dissolve");
-			// await ToSignal(anim, "animation_finished");
-			// GetTree().ChangeSceneToFile(target);
-			// anim.PlayBackwards("dissolve");
+			AnimationPlayer anim = GetNode<AnimationPlayer>("AnimationPlayer");
+			anim.Play("dissolve");
+			await ToSignal(anim, "animation_finished");
+			GetTree().ChangeSceneToFile(target);
+			anim.PlayBackwards("dissolve");
 
-			// EmitSignal(SignalName.SceneChanged);
+			EmitSignal(SignalName.SceneChanged);
 		}
 	}
 }
