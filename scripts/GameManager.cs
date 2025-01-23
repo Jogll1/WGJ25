@@ -6,7 +6,7 @@ namespace WGJ25
 	public partial class GameManager : Node2D
 	{
 		// Test
-		private string[] scenes = new string[3] {"game1", "game2", "game3"};
+		private string[] scenes = {"egg_game/egg_game"};
 
 		// References
 		SceneTransition sceneTransition;

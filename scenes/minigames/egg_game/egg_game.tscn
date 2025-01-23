@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dji0nga4woixr"]
+
+[ext_resource type="Script" path="res://scripts/minigames/EggGameManager.cs" id="1_vslmh"]
+[ext_resource type="PackedScene" uid="uid://3tnbkewmegxs" path="res://scenes/minigames/egg_game/dinosaur.tscn" id="1_xu4a4"]
+[ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="3_petmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkxnf"]
+size = Vector2(128, 128)
+
+[node name="EggGame" type="Node2D"]
+script = ExtResource("1_vslmh")
+
+[node name="UIParent" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1600.0
+offset_bottom = 900.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 90
+text = "Egg"
+fit_content = true
+scroll_active = false
+
+[node name="Dinosaur" parent="." instance=ExtResource("1_xu4a4")]
+
+[node name="Floor2" type="StaticBody2D" parent="."]
+position = Vector2(602, 662)
+scale = Vector2(9.5, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
+shape = SubResource("RectangleShape2D_dkxnf")
+
+[node name="Floor" type="Sprite2D" parent="Floor2"]
+texture = ExtResource("3_petmc")
