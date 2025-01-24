@@ -11,6 +11,9 @@ namespace WGJ25
 		// References
 		SceneTransition sceneTransition;
 
+		public const int SCREEN_WIDTH = 1280;
+		public const int SCREEN_HEIGHT = 720;
+
 		public override void _EnterTree()
 		{
 			sceneTransition = GetNode<SceneTransition>("SceneTransition");
@@ -27,7 +30,7 @@ namespace WGJ25
 
 		public void LoadRandomGame() 
 		{
-			Random random = new Random();
+			Random random = new();
 			int index = random.Next(scenes.Length);
 			GD.Print($"Loading {scenes[index]}");
 			sceneTransition.ChangeScene($"res://scenes/minigames/{scenes[index]}.tscn");

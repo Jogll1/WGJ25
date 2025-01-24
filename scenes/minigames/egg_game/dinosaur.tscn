@@ -7,6 +7,8 @@
 size = Vector2(128, 32)
 
 [node name="Dinosaur" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_dnqc0")
 
@@ -19,6 +21,7 @@ position = Vector2(-64, 0)
 scale = Vector2(1, 4)
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
 autostart = true
 

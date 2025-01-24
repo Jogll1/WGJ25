@@ -1,21 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgdjoou3252ol"]
+[gd_scene load_steps=7 format=3 uid="uid://bxrer4vs1q0ee"]
 
-[ext_resource type="Script" path="res://scripts/minigames/Egg.cs" id="1_00oym"]
-[ext_resource type="Texture2D" uid="uid://d33sjwoi6j1i7" path="res://art/minigames/egg/Egg.png" id="1_yw3jl"]
+[ext_resource type="Script" path="res://scripts/minigames/Egg.cs" id="1_uddhk"]
+[ext_resource type="Texture2D" uid="uid://d33sjwoi6j1i7" path="res://art/minigames/egg/Egg.png" id="2_lq5a6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bqpog"]
-atlas = ExtResource("1_yw3jl")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_thnjd"]
+atlas = ExtResource("2_lq5a6")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j1bsk"]
-atlas = ExtResource("1_yw3jl")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_44jkl"]
+atlas = ExtResource("2_lq5a6")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cihfk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bqpog")
+"texture": SubResource("AtlasTexture_thnjd")
 }],
 "loop": true,
 "name": &"cracked",
@@ -23,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j1bsk")
+"texture": SubResource("AtlasTexture_44jkl")
 }],
 "loop": true,
 "name": &"default",
@@ -34,10 +34,10 @@ animations = [{
 radius = 18.0
 height = 50.0
 
-[node name="Egg" type="RigidBody2D" groups=["EggCollectable"]]
+[node name="Poop" type="RigidBody2D" groups=["EggCollectable"]]
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_00oym")
+script = ExtResource("1_uddhk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)

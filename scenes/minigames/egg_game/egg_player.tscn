@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ug3h58pdjr1v"]
+
+[ext_resource type="Script" path="res://scripts/minigames/EggPlayer.cs" id="1_7cyli"]
+[ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="1_pmsk2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0vqq"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03xlc"]
+size = Vector2(64, 16)
+
+[node name="EggPlayer" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_7cyli")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(0, -32)
+scale = Vector2(1, 2)
+texture = ExtResource("1_pmsk2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_k0vqq")
+
+[node name="Basket" type="Area2D" parent="."]
+position = Vector2(0, -72)
+
+[node name="Sprite2D" type="Sprite2D" parent="Basket"]
+z_index = 10
+scale = Vector2(2, 0.5)
+texture = ExtResource("1_pmsk2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket"]
+shape = SubResource("RectangleShape2D_03xlc")
+
+[connection signal="body_entered" from="Basket" to="." method="OnBasketEntered"]

@@ -7,18 +7,17 @@ namespace WGJ25
 	{
 		private GameManager gameManager;
 		private Dinosaur dinosaur;
+		private EggPlayer player;
 
 		public override void _Ready()
 		{
 			gameManager = GetNode<GameManager>("/root/GameManager");
 
 			dinosaur = GetNode<Dinosaur>("Dinosaur");
-			dinosaur.GlobalPosition = new Vector2(600, 25);
-		}
+			if (dinosaur != null) dinosaur.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, 25);
 
-		public override void _Process(double delta)
-		{
-
+			player = GetNode<EggPlayer>("EggPlayer");
+			if (player != null) player.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, GameManager.SCREEN_HEIGHT - 32);
 		}
 	}
 }
