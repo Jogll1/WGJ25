@@ -3,16 +3,13 @@ using System;
 
 namespace WGJ25
 {
-	public partial class EggGameManager : Node2D
+	public partial class EggGameManager : MinigameManager
 	{
-		private GameManager gameManager;
 		private Dinosaur dinosaur;
 		private EggPlayer player;
 
 		public override void _Ready()
 		{
-			gameManager = GetNode<GameManager>("/root/GameManager");
-
 			dinosaur = GetNode<Dinosaur>("Dinosaur");
 			if (dinosaur != null) dinosaur.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, 25);
 

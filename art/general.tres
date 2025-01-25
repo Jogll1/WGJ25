@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://cy5t81wiiv218"]
+
+[resource]
+default_font_size = 80
+RichTextLabel/constants/shadow_offset_x = 3
+RichTextLabel/constants/shadow_offset_y = 3
