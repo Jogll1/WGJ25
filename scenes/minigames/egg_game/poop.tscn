@@ -31,16 +31,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k04sl"]
-radius = 18.0
-height = 50.0
+radius = 29.0
+height = 64.0
 
-[node name="Poop" type="RigidBody2D" groups=["EggCollectable"]]
+[node name="Poop" type="RigidBody2D" groups=["EggCollectable", "Poop"]]
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_uddhk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_cihfk")
 animation = &"cracked"
 
