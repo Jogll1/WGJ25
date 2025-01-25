@@ -19,6 +19,7 @@ namespace WGJ25
 			if (player != null) player.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, GameManager.SCREEN_HEIGHT - 32);
 
 			SetPopupText("Catch the eggs!");
+			StartStopwatch();
 		}
 	}
 }
