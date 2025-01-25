@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c6te0bb71epsh"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_gypub"]
-[ext_resource type="Script" path="res://scripts/minigames/EggGameManager.cs" id="1_vslmh"]
+[ext_resource type="Script" path="res://scripts/minigames/egg_game/EggGameManager.cs" id="1_vslmh"]
 [ext_resource type="PackedScene" uid="uid://3tnbkewmegxs" path="res://scenes/minigames/egg_game/dinosaur.tscn" id="1_xu4a4"]
 [ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="3_dgjmo"]
 [ext_resource type="PackedScene" uid="uid://ug3h58pdjr1v" path="res://scenes/minigames/egg_game/egg_player.tscn" id="4_3bmf2"]

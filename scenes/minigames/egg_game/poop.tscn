@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxrer4vs1q0ee"]
 
-[ext_resource type="Script" path="res://scripts/minigames/Egg.cs" id="1_uddhk"]
+[ext_resource type="Script" path="res://scripts/minigames/egg_game/Egg.cs" id="1_uddhk"]
 [ext_resource type="Texture2D" uid="uid://d33sjwoi6j1i7" path="res://art/minigames/egg/Egg.png" id="2_lq5a6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_thnjd"]
