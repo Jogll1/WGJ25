@@ -1,30 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://dji0nga4woixr"]
+[gd_scene load_steps=7 format=3 uid="uid://c6te0bb71epsh"]
 
+[ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_gypub"]
 [ext_resource type="Script" path="res://scripts/minigames/EggGameManager.cs" id="1_vslmh"]
 [ext_resource type="PackedScene" uid="uid://3tnbkewmegxs" path="res://scenes/minigames/egg_game/dinosaur.tscn" id="1_xu4a4"]
-[ext_resource type="PackedScene" uid="uid://c3kbsp48pw4xu" path="res://scenes/ui/popup_text.tscn" id="2_5ulum"]
 [ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="3_dgjmo"]
 [ext_resource type="PackedScene" uid="uid://ug3h58pdjr1v" path="res://scenes/minigames/egg_game/egg_player.tscn" id="4_3bmf2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_to6ug"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc12p"]
 size = Vector2(32, 32)
 
-[node name="EggGame" type="Node2D"]
+[node name="EggGame" instance=ExtResource("1_gypub")]
 script = ExtResource("1_vslmh")
 
-[node name="PopupText" parent="." instance=ExtResource("2_5ulum")]
+[node name="Dinosaur" parent="." index="1" instance=ExtResource("1_xu4a4")]
 
-[node name="Dinosaur" parent="." instance=ExtResource("1_xu4a4")]
-
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="." index="2"]
 position = Vector2(640, 720)
 
-[node name="Floor" type="Sprite2D" parent="Floor"]
+[node name="Floor" type="Sprite2D" parent="Floor" index="0"]
 scale = Vector2(40, 2)
 texture = ExtResource("3_dgjmo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" index="1"]
 scale = Vector2(40, 2)
-shape = SubResource("RectangleShape2D_to6ug")
+shape = SubResource("RectangleShape2D_mc12p")
 
-[node name="EggPlayer" parent="." instance=ExtResource("4_3bmf2")]
+[node name="EggPlayer" parent="." index="3" instance=ExtResource("4_3bmf2")]
