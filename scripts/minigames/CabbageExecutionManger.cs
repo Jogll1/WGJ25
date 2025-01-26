@@ -32,5 +32,7 @@ public partial class CabbageExecutionManger : MinigameManager
 
 		if(guillotine.IsFalling && executable.IsCabbage) cabbageCount++;
 		else if (guillotine.IsFalling && !executable.IsCabbage) nobleCount++;
+
+		GD.Print("Cabbages: " + cabbageCount + " Nobles: " + nobleCount);
     }
 }
