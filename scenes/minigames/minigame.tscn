@@ -1,9 +1,196 @@
-[gd_scene load_steps=3 format=3 uid="uid://mc6ixurg3r01"]
+[gd_scene load_steps=10 format=3 uid="uid://mc6ixurg3r01"]
 
-[ext_resource type="Script" path="res://scripts/MinigameManager.cs" id="1_5oak6"]
-[ext_resource type="PackedScene" uid="uid://c3kbsp48pw4xu" path="res://scenes/ui/popup_text.tscn" id="2_o8up0"]
+[ext_resource type="Theme" uid="uid://cy5t81wiiv218" path="res://art/general.tres" id="2_futol"]
+[ext_resource type="Texture2D" uid="uid://b4yaydy3h6qcc" path="res://art/ui/stopwatch.png" id="2_lvrbe"]
+
+[sub_resource type="Animation" id="Animation_vw2oh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PopupText:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PopupText:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r8kp4"]
+resource_name = "popup_text"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PopupText:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667, 1, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1.3, 1.3), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PopupText:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.666667, 2.66667, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yj0gf"]
+resource_name = "popup_text_quick"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PopupText:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.500003),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.3, 1.3), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PopupText:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 2.33333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktac1"]
+_data = {
+"RESET": SubResource("Animation_vw2oh"),
+"popup_text": SubResource("Animation_r8kp4"),
+"popup_text_quick": SubResource("Animation_yj0gf")
+}
+
+[sub_resource type="Animation" id="Animation_cd085"]
+resource_name = "count"
+length = 9.0001
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_8jrfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_67i57"]
+_data = {
+"RESET": SubResource("Animation_8jrfo"),
+"count": SubResource("Animation_cd085")
+}
 
 [node name="Minigame" type="Node2D"]
-script = ExtResource("1_5oak6")
 
-[node name="PopupText" parent="." instance=ExtResource("2_o8up0")]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UIParent" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="PopupTextParent" type="Control" parent="UI/UIParent"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="PopupText" type="RichTextLabel" parent="UI/UIParent/PopupTextParent"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -55.0
+offset_right = 640.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(640, 55)
+theme = ExtResource("2_futol")
+bbcode_enabled = true
+text = "[center]GAME_INSTRUCTION"
+fit_content = true
+scroll_active = false
+
+[node name="PopupTextAnim" type="AnimationPlayer" parent="UI/UIParent/PopupTextParent"]
+libraries = {
+"": SubResource("AnimationLibrary_ktac1")
+}
+autoplay = "popup_text"
+
+[node name="StopwatchParent" type="Control" parent="UI/UIParent"]
+anchors_preset = 0
+offset_left = 1184.0
+offset_top = 102.0
+offset_right = 1184.0
+offset_bottom = 102.0
+
+[node name="StopwatchTimer" type="Timer" parent="UI/UIParent/StopwatchParent"]
+wait_time = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/UIParent/StopwatchParent"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_lvrbe")
+hframes = 9
+
+[node name="StopwatchAnim" type="AnimationPlayer" parent="UI/UIParent/StopwatchParent"]
+libraries = {
+"": SubResource("AnimationLibrary_67i57")
+}

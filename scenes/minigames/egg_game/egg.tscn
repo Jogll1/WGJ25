@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bgdjoou3252ol"]
 
-[ext_resource type="Script" path="res://scripts/minigames/Egg.cs" id="1_00oym"]
+[ext_resource type="Script" path="res://scripts/minigames/egg_game/Egg.cs" id="1_00oym"]
 [ext_resource type="Texture2D" uid="uid://d33sjwoi6j1i7" path="res://art/minigames/egg/Egg.png" id="1_yw3jl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqpog"]
@@ -31,18 +31,17 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k04sl"]
-radius = 18.0
-height = 50.0
+radius = 24.0
+height = 64.0
 
-[node name="Egg" type="RigidBody2D" groups=["EggCollectable"]]
+[node name="Egg" type="RigidBody2D" groups=["Egg", "EggCollectable"]]
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_00oym")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_cihfk")
-animation = &"cracked"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["EggCollectable"]]
 shape = SubResource("CapsuleShape2D_k04sl")

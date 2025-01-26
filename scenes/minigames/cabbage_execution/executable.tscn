@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://darfkejg3strr"]
 
 [ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="1_2i5eu"]
-[ext_resource type="Script" path="res://scripts/minigames/Executable.cs" id="2_b2r5m"]
+[ext_resource type="Script" path="res://scripts/minigames/cabbage_execution/Executable.cs" id="2_b2r5m"]
 
 [node name="executable" type="Sprite2D"]
 texture = ExtResource("1_2i5eu")

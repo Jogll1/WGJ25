@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_o0s7j"]
 [ext_resource type="PackedScene" uid="uid://darfkejg3strr" path="res://scenes/minigames/cabbage_execution/executable.tscn" id="1_q1htf"]
 [ext_resource type="PackedScene" uid="uid://dmf756rn0sndu" path="res://scenes/minigames/cabbage_execution/guillotine.tscn" id="2_macmb"]
-[ext_resource type="Script" path="res://scripts/minigames/CabbageExecutionManger.cs" id="2_p081j"]
+[ext_resource type="Script" path="res://scripts/minigames/cabbage_execution/CabbageExecutionManger.cs" id="2_p081j"]
 [ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="3_tywiv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x38n3"]
