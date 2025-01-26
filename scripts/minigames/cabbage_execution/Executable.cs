@@ -11,8 +11,9 @@ public partial class Executable : Sprite2D
 	//Checks if the player is clicking on the sprite and acts accordingly
     public override void _Input(InputEvent @event)
     {
-        if(@event is InputEventMouseButton eventMouseButton && canBeClicked &&
-			Input.IsActionJustPressed("Click") && GetRect().HasPoint(ToLocal(eventMouseButton.Position))){
+		//Got rid of clicking on the executable to change it. Its quicker and more fun just to press the
+		//movement buttons
+        if( canBeClicked && (Input.IsActionJustPressed("move_left") ||Input.IsActionJustPressed("move_right"))){
 				GD.Print("You clicked on the executable");//For debugging
 				GetNextExecutable();
 			}
