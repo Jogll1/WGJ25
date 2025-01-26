@@ -61,7 +61,7 @@ namespace WGJ25
 
 			for (int i = 0; i < selected.Length; i++)
 			{
-				if (scenesLength < GAMES_AMOUNT)
+				if (i >= scenesLength)
 				{
 					// Allow duplicates if there are less than five scenes in scenes
 					selected[i] = scenes[random.Next(0, scenesLength)];

@@ -10,6 +10,7 @@ public partial class CabbageExecutionManger : MinigameManager
 	private StaticBody2D board;
 	private int cabbageCount = 0;
 	private int nobleCount = 0;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
