@@ -29,7 +29,7 @@ namespace WGJ25
 			int score = Mathf.FloorToInt((float)player.EggsCaught / (float)dinosaur.EggsDropped * 100);
 			GD.Print($"Score: {score}");
 
-			gameManager.LoadRandomGame();
+			gameManager.LoadNextGame();
 		}
 	}
 }
