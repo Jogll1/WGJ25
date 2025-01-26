@@ -3,9 +3,13 @@ using System;
 
 public partial class Guillotine : RigidBody2D
 {
+	public bool CanBeDragged {get {return canBeDragged;} set{canBeDragged = value;}}
+	public bool IsFalling {get {return isFalling;}}
 	private Godot.Vector2 originalPosition;
-	private const int moveSpeed = 20;
 	private Sprite2D sprite;
+	private StaticBody2D board;
+	private Node2D parent;
+	private const int moveSpeed = 20;
 	private bool canBeDragged;
 	private bool isBeingDragged;
 	private bool isFalling;
@@ -13,8 +17,10 @@ public partial class Guillotine : RigidBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		originalPosition = Position;
+		parent = GetParent<Node2D>();
 		sprite = GetNode<Sprite2D>("Sprite2D");
+		board = parent.GetNode<StaticBody2D>("Board");
+		originalPosition = Position;
 		canBeDragged = false;
 		isBeingDragged =false;
 		isFalling = false;
@@ -36,12 +42,21 @@ public partial class Guillotine : RigidBody2D
 		//again. Also check if it is near the start position. If it is, stop and reset the dragging bools.
 		else if (isBeingDragged){
 			Godot.Vector2 dir = GetViewport().GetMousePosition() - this.Position;
-			dir.Normalized();
-			this.GlobalPosition += new Vector2 (0, dir.Y * (float)delta * moveSpeed);
+
+			//To prevent dragging below the board.
+			if((sprite.Texture.GetHeight() / 2) + GlobalPosition.Y < board.GlobalPosition.Y){
+				dir.Normalized();
+				this.GlobalPosition += new Vector2 (0, dir.Y * (float)delta * moveSpeed);
+			}
+			else {
+				this.GlobalPosition += new Vector2(0, 0);
+			}
+
 			if(Input.IsActionJustReleased("Click")){
 				isBeingDragged = false;
 				isFalling = true;
 			}
+			
 			if((this.GlobalPosition.Y - originalPosition.Y) <= 10){
 				Modulate = new Color(1, 1, 1);
 				canBeDragged = false;
