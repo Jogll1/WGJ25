@@ -14,19 +14,22 @@ public partial class Executable : Sprite2D
         if(@event is InputEventMouseButton eventMouseButton && canBeClicked &&
 			Input.IsActionJustPressed("Click") && GetRect().HasPoint(ToLocal(eventMouseButton.Position))){
 				GD.Print("You clicked on the executable");//For debugging
-				
-				//For now we just randomly change the colour of the sprite instead of loading a new one.
-				//Green == cabbage.
-				Random random = new();
-				int index = random.Next(2);
-				if(index == 0){
-					Modulate = new Color(0, 1, 0);
-					isCabbage = true;
-				}
-				else {
-					Modulate = new Color(1, 1, 1);
-					isCabbage = false;
-				}
+				GetNextExecutable();
 			}
     }
+
+	public void GetNextExecutable(){
+		//For now we just randomly change the colour of the sprite instead of loading a new one.
+		//Green == cabbage.
+		Random random = new();
+		int index = random.Next(2);
+		if(index == 0){
+			Modulate = new Color(0, 1, 0);
+			isCabbage = true;
+		}
+		else {
+			Modulate = new Color(1, 1, 1);
+			isCabbage = false;
+		}
+	}
 }

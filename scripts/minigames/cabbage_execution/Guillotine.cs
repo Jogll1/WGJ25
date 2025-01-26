@@ -8,6 +8,7 @@ public partial class Guillotine : RigidBody2D
 	private Godot.Vector2 originalPosition;
 	private Sprite2D sprite;
 	private StaticBody2D board;
+	private Executable executable;
 	private Node2D parent;
 	private const int moveSpeed = 20;
 	private bool canBeDragged;
@@ -20,6 +21,7 @@ public partial class Guillotine : RigidBody2D
 		parent = GetParent<Node2D>();
 		sprite = GetNode<Sprite2D>("Sprite2D");
 		board = parent.GetNode<StaticBody2D>("Board");
+		executable = parent.GetNode<Executable>("Executable");
 		originalPosition = Position;
 		canBeDragged = false;
 		isBeingDragged =false;
@@ -51,16 +53,17 @@ public partial class Guillotine : RigidBody2D
 			else {
 				this.GlobalPosition += new Vector2(0, 0);
 			}
-
+			//If the player messes up so the guillotine isn't stuck
 			if(Input.IsActionJustReleased("Click")){
 				isBeingDragged = false;
 				isFalling = true;
 			}
-			
+			//Resetting once the guillotine roughly reaches its original position.
 			if((this.GlobalPosition.Y - originalPosition.Y) <= 10){
 				Modulate = new Color(1, 1, 1);
 				canBeDragged = false;
 				isBeingDragged = false;
+				executable.GetNextExecutable();
 			}
 		}
 	}
