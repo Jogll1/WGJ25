@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmf756rn0sndu"]
 
-[ext_resource type="Script" path="res://scripts/minigames/cabbage_execution/Guillotine.cs" id="1_aifqs"]
 [ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="1_doxk6"]
+[ext_resource type="Script" path="res://scripts/minigames/cabbage_execution/Guillotine.cs" id="1_ssrpr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4y7is"]
 size = Vector2(128, 128)
 
 [node name="Guillotine" type="RigidBody2D"]
 gravity_scale = 0.0
-script = ExtResource("1_aifqs")
+script = ExtResource("1_ssrpr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4y7is")

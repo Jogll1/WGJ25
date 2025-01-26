@@ -2,30 +2,30 @@
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_o0s7j"]
 [ext_resource type="PackedScene" uid="uid://darfkejg3strr" path="res://scenes/minigames/cabbage_execution/executable.tscn" id="1_q1htf"]
+[ext_resource type="Script" path="res://scripts/minigames/cabbage_execution/CabbageExecutionManger.cs" id="2_l4fok"]
 [ext_resource type="PackedScene" uid="uid://dmf756rn0sndu" path="res://scenes/minigames/cabbage_execution/guillotine.tscn" id="2_macmb"]
-[ext_resource type="Script" path="res://scripts/minigames/cabbage_execution/CabbageExecutionManger.cs" id="2_p081j"]
 [ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="3_tywiv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x38n3"]
 size = Vector2(128, 32)
 
-[node name="Minigame" instance=ExtResource("1_o0s7j")]
-script = ExtResource("2_p081j")
+[node name="CabbageExecution" instance=ExtResource("1_o0s7j")]
+script = ExtResource("2_l4fok")
 
-[node name="executable" parent="." index="1" instance=ExtResource("1_q1htf")]
+[node name="Executable" parent="." index="1" instance=ExtResource("1_q1htf")]
 position = Vector2(478, 547)
 scale = Vector2(0.5, 0.5)
 
 [node name="Guillotine" parent="." index="2" instance=ExtResource("2_macmb")]
 position = Vector2(473, 93)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
+[node name="Board" type="StaticBody2D" parent="." index="3"]
 position = Vector2(479, 604)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board" index="0"]
 shape = SubResource("RectangleShape2D_x38n3")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" index="1"]
+[node name="Sprite2D" type="Sprite2D" parent="Board" index="1"]
 position = Vector2(0, 0.500002)
 scale = Vector2(0.916, 0.25)
 texture = ExtResource("3_tywiv")
