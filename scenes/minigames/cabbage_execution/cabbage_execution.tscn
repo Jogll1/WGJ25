@@ -29,3 +29,16 @@ shape = SubResource("RectangleShape2D_x38n3")
 position = Vector2(0, 0.500002)
 scale = Vector2(0.916, 0.25)
 texture = ExtResource("3_tywiv")
+
+[node name="Basket" type="StaticBody2D" parent="." index="4"]
+position = Vector2(479, 604)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket" index="0"]
+shape = SubResource("RectangleShape2D_x38n3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Basket" index="1"]
+position = Vector2(0, 0.500002)
+scale = Vector2(0.916, 0.25)
+texture = ExtResource("3_tywiv")

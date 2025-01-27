@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhmlw0tcabdke"]
+
+[ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_3pxwd"]
+[ext_resource type="Script" path="res://scripts/minigames/snappy_feet/SnappyFeetManager.cs" id="2_m3fn2"]
+[ext_resource type="PackedScene" uid="uid://djyq5d5squbmb" path="res://scenes/minigames/snappy_feet/crocodile.tscn" id="3_4u2yb"]
+
+[node name="SnappyFeet" instance=ExtResource("1_3pxwd")]
+script = ExtResource("2_m3fn2")
+
+[node name="Crocs" type="Node" parent="." index="1"]
+
+[node name="Crocodile" parent="Crocs" index="0" instance=ExtResource("3_4u2yb")]
