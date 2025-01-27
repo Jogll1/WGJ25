@@ -10,7 +10,7 @@ public partial class Guillotine : RigidBody2D
 	private StaticBody2D board;
 	private Executable executable;
 	private Node2D parent;
-	private const int moveSpeed = 20;
+	private const int moveSpeed = 40;
 	private bool canBeDragged;
 	private bool isBeingDragged;
 	private bool isFalling;
@@ -46,13 +46,14 @@ public partial class Guillotine : RigidBody2D
 			Godot.Vector2 dir = GetViewport().GetMousePosition() - this.Position;
 
 			//To prevent dragging below the board.
-			if((sprite.Texture.GetHeight() / 2) + GlobalPosition.Y < board.GlobalPosition.Y){
-				dir.Normalized();
-				this.GlobalPosition += new Vector2 (0, dir.Y * (float)delta * moveSpeed);
-			}
-			else {
-				this.GlobalPosition += new Vector2(0, 0);
-			}
+			// if((sprite.Texture.GetHeight() / 2) + GlobalPosition.Y < board.GlobalPosition.Y){
+			// 	dir.Normalized();
+			// 	this.GlobalPosition += new Vector2 (0, dir.Y * (float)delta * moveSpeed);
+			// }
+			// else {
+			// 	this.GlobalPosition += new Vector2(0, 0);
+			// }
+			MoveAndCollide(new Vector2(0, -1) * (moveSpeed/2));
 			//If the player messes up so the guillotine isn't stuck
 			if(Input.IsActionJustReleased("Click")){
 				isBeingDragged = false;
@@ -71,8 +72,7 @@ public partial class Guillotine : RigidBody2D
 	public override void _Input(InputEvent @event)
     {
 		//If the sprite is clicked on, start falling.
-        if(@event is InputEventMouseButton eventMouseButton && 
-			Input.IsActionJustPressed("Click") && sprite.GetRect().HasPoint(ToLocal(eventMouseButton.Position))){
+        if(Input.IsActionJustPressed("move_down") ){
 				GD.Print("You clicked on the guillotine");//For debugging
 				
 				//For now we just randomly change the colour of the sprite instead of loading a new one.
@@ -80,8 +80,8 @@ public partial class Guillotine : RigidBody2D
 				isFalling = true;
 		}
 		//If the mouse is being held and dragged, and it can be dragged, start dragging.
-		else if (@event is InputEventMouseMotion eventMouseMotion && canBeDragged && 
-				Input.IsActionPressed("Click") && sprite.GetRect().HasPoint(ToLocal(eventMouseMotion.Position))) {
+		else if (canBeDragged && 
+				Input.IsActionPressed("move_up")) {
 				isBeingDragged = true;
 		}
     }
