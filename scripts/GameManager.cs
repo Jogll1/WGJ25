@@ -18,8 +18,7 @@ namespace WGJ25
 		public const int SCREEN_WIDTH = 1280;
 		public const int SCREEN_HEIGHT = 720;
 
-		// Index of the next game
-		private int nextGame = 0;
+		private int nextGame = 0; // Index of the next game
 
 		public override void _EnterTree()
 		{
