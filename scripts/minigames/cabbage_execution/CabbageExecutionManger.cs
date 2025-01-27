@@ -43,7 +43,7 @@ namespace WGJ25
 		{
 			base.OnStopwatchTimeout();
 
-			int score = Mathf.FloorToInt((float)cabbageCount/(float)(cabbageCount+nobleCount)) * 100;
+			int score = Mathf.FloorToInt((float)cabbageCount/(float)(cabbageCount+nobleCount) * 100);
 			GD.Print($"Score: {score}");
 
 			gameManager.LoadNextGame();
