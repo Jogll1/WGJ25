@@ -44,7 +44,7 @@ namespace WGJ25{
 			int score = Mathf.FloorToInt(cabbageCount/(cabbageCount+nobleCount));
 			GD.Print($"Score: {score}");
 
-			gameManager.LoadRandomGame();
+			gameManager.LoadNextGame();
 		}
 	}
 }
