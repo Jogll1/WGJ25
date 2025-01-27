@@ -5,9 +5,11 @@ using System;
 namespace WGJ25{
 	public partial class CabbageExecutionManger : MinigameManager
 	{
+		private const string EXECUTABLE_PATH = "res://scenes/minigames/cabbage_execution/executable.tscn";
 		private Executable executable;
 		private Guillotine guillotine;
 		private StaticBody2D board;
+		private StaticBody2D basket;
 		private int cabbageCount = 0;
 		private int nobleCount = 0;
 		
@@ -25,17 +27,32 @@ namespace WGJ25{
 			board = GetNode<StaticBody2D>("Board");
 			if(board != null) board.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, executable.GlobalPosition.Y + 40);
 
+			basket = GetNode<StaticBody2D>("Basket");
+			if(basket != null) basket.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, board.GlobalPosition.Y + 128);
+
 			SetPopupText("Slice the Cabbage!");
 		}
 
 		public override void _Process(double delta)
 		{
 			//To avoid double-clicking that sometimes occurs when dragging the guillotine back up.
-			if(guillotine.CanBeDragged) executable.CanBeClicked = false;
+			if(guillotine.CanBeDragged){
+				executable.CanBeClicked = false;
+				if(!executable.Executed){
+					executable.Executed = true;
+					executable.ApplyImpulse(new Vector2(0, -250));
+					executable.GravityScale = 1f;
+				}
+			}  
 			else executable.CanBeClicked = true;
 
 			if(guillotine.IsFalling && executable.IsCabbage) cabbageCount++;
 			else if (guillotine.IsFalling && !executable.IsCabbage) nobleCount++;
+			if(!guillotine.CanBeDragged && !guillotine.IsFalling && executable.Executed){
+				Executable temp = (Executable)ObjectManager.SpawnObject(EXECUTABLE_PATH, new Vector2(GameManager.SCREEN_WIDTH / 2, GameManager.SCREEN_HEIGHT / 1.5f), this);
+				executable = temp;
+				executable.GetNextExecutable();
+			}
 		}
 
 		protected override void OnStopwatchTimeout()
