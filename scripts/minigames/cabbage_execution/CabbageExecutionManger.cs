@@ -1,8 +1,8 @@
 using Godot;
 using System;
 
+
 namespace WGJ25{
-	
 	public partial class CabbageExecutionManger : MinigameManager
 	{
 		private Executable executable;
@@ -10,7 +10,7 @@ namespace WGJ25{
 		private StaticBody2D board;
 		private int cabbageCount = 0;
 		private int nobleCount = 0;
-
+		
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
@@ -41,7 +41,7 @@ namespace WGJ25{
 		protected override void OnStopwatchTimeout()
 		{
 			base.OnStopwatchTimeout();
-			int score = Mathf.FloorToInt((float)cabbageCount/(float)(cabbageCount+nobleCount)) * 100;
+			int score = Mathf.FloorToInt(cabbageCount/(cabbageCount+nobleCount));
 			GD.Print($"Score: {score}");
 
 			gameManager.LoadRandomGame();
