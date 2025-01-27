@@ -62,5 +62,10 @@ namespace WGJ25
 			// Set the popup message text - this should be called in the _Ready() method of a MinigameManager subclass
 			popupText.Text = $"[center]{text}";
 		}
+
+		public double GetTimerTimeLeft() 
+		{
+			return stopwatchTimer.TimeLeft;
+		}
 	}
 }

@@ -46,6 +46,5 @@ namespace WGJ25{
 
 			gameManager.LoadRandomGame();
 		}
-
 	}
 }
