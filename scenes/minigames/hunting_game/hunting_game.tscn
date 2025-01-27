@@ -6,17 +6,23 @@
 [ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="3_gojru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uitd1"]
-size = Vector2(64, 64)
+size = Vector2(48, 48)
 
 [node name="HuntingGame" instance=ExtResource("1_0ats2")]
 script = ExtResource("2_1nhnn")
 
 [node name="Hunter" type="CharacterBody2D" parent="." index="1"]
+motion_mode = 1
 script = ExtResource("3_8hnw2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hunter" index="0"]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_gojru")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hunter" index="1"]
 shape = SubResource("RectangleShape2D_uitd1")
+
+[node name="Timer" type="Timer" parent="Hunter" index="2"]
+wait_time = 0.25
+
+[connection signal="timeout" from="Hunter/Timer" to="Hunter" method="OnTimerTimeout"]

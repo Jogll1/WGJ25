@@ -40,7 +40,7 @@ namespace WGJ25
         public override void _Process(double delta) 
 		{
 			// To test, if space is pressed, load the next game
-			if (Input.IsActionJustPressed("ui_select")) 
+			if (Input.IsActionJustPressed("Q")) 
 			{
 				LoadNextGame();
 			}
