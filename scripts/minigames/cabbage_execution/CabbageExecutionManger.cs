@@ -1,8 +1,9 @@
 using Godot;
 using System;
 
-namespace WGJ25{
-	
+namespace WGJ25
+{
+
 	public partial class CabbageExecutionManger : MinigameManager
 	{
 		private Executable executable;
@@ -41,11 +42,11 @@ namespace WGJ25{
 		protected override void OnStopwatchTimeout()
 		{
 			base.OnStopwatchTimeout();
+
 			int score = Mathf.FloorToInt((float)cabbageCount/(float)(cabbageCount+nobleCount)) * 100;
 			GD.Print($"Score: {score}");
 
-			gameManager.LoadRandomGame();
+			gameManager.LoadNextGame();
 		}
-
 	}
 }

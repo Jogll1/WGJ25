@@ -18,7 +18,7 @@ namespace WGJ25
 			player = GetNode<EggPlayer>("EggPlayer");
 			if (player != null) player.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, GameManager.SCREEN_HEIGHT - 32);
 
-			SetPopupText("Catch the eggs!");
+			SetPopupText("Catch the Eggs!");
 		}
 		
 		protected override void OnStopwatchTimeout()
@@ -29,7 +29,7 @@ namespace WGJ25
 			int score = Mathf.FloorToInt((float)player.EggsCaught / (float)dinosaur.EggsDropped * 100);
 			GD.Print($"Score: {score}");
 
-			gameManager.LoadRandomGame();
+			gameManager.LoadNextGame();
 		}
 	}
 }

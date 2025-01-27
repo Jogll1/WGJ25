@@ -37,7 +37,7 @@ namespace WGJ25
 
 		public override void _Process(double delta)
 		{
-			if (spawnTimer.TimeLeft == 0 && !eggGameManager.GameEnded)
+			if (spawnTimer.TimeLeft == 0 && !eggGameManager.GameEnded && spawnTimer.TimeLeft + 1.25f < eggGameManager.GetTimerTimeLeft())
 			{
 				Random random = new();
 				if (random.NextDouble() < 0.33f && !spawnedPoop)
