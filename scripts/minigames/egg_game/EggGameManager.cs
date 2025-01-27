@@ -18,7 +18,7 @@ namespace WGJ25
 			player = GetNode<EggPlayer>("EggPlayer");
 			if (player != null) player.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, GameManager.SCREEN_HEIGHT - 32);
 
-			SetPopupText("Catch the Eggs!");
+			SetPopupText("Catch the eggs!");
 		}
 		
 		protected override void OnStopwatchTimeout()
