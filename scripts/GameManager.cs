@@ -7,7 +7,7 @@ namespace WGJ25
 	public partial class GameManager : Node2D
 	{
 		// Array of all minigame scenes
-		private readonly string[] scenes = {"egg_game/egg_game", "cabbage_execution/cabbage_execution"};
+		private readonly string[] scenes = {"egg_game/egg_game", "cabbage_execution/cabbage_execution", "hunting_game/hunting_game"};
 		private string[] selectedScenes;
 
 		// References
@@ -81,7 +81,7 @@ namespace WGJ25
 		{
 			if (nextGame < GAMES_AMOUNT)
 			{
-				GD.Print($"Loading {selectedScenes[nextGame]}");
+				GD.Print($"{nextGame + 1}. Loading {selectedScenes[nextGame]}");
 				sceneTransition.ChangeScene($"res://scenes/minigames/{selectedScenes[nextGame]}.tscn");
 				nextGame++;
 			}
