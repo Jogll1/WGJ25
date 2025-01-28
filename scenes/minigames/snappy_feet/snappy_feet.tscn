@@ -1,12 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhmlw0tcabdke"]
+[gd_scene load_steps=6 format=3 uid="uid://dhmlw0tcabdke"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_3pxwd"]
 [ext_resource type="Script" path="res://scripts/minigames/snappy_feet/SnappyFeetManager.cs" id="2_m3fn2"]
-[ext_resource type="PackedScene" uid="uid://djyq5d5squbmb" path="res://scenes/minigames/snappy_feet/crocodile.tscn" id="3_4u2yb"]
+[ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="3_hsadt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04ea8"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsejm"]
+size = Vector2(384, 32)
 
 [node name="SnappyFeet" instance=ExtResource("1_3pxwd")]
 script = ExtResource("2_m3fn2")
 
-[node name="Crocs" type="Node" parent="." index="1"]
+[node name="LeftShore" type="StaticBody2D" parent="." index="1"]
 
-[node name="Crocodile" parent="Crocs" index="0" instance=ExtResource("3_4u2yb")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftShore" index="0"]
+shape = SubResource("RectangleShape2D_04ea8")
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftShore" index="1"]
+scale = Vector2(1, 0.25)
+texture = ExtResource("3_hsadt")
+
+[node name="RightShore" type="StaticBody2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightShore" index="0"]
+shape = SubResource("RectangleShape2D_vsejm")
+
+[node name="Sprite2D" type="Sprite2D" parent="RightShore" index="1"]
+scale = Vector2(3, 0.25)
+texture = ExtResource("3_hsadt")
