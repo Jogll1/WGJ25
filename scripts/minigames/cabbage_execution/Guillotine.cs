@@ -55,7 +55,7 @@ public partial class Guillotine : RigidBody2D
 			// }
 			MoveAndCollide(new Vector2(0, -1) * (moveSpeed/2));
 			//If the player messes up so the guillotine isn't stuck
-			if(Input.IsActionJustReleased("Click")){
+			if(Input.IsActionJustReleased("move_up")){
 				isBeingDragged = false;
 				isFalling = true;
 			}
