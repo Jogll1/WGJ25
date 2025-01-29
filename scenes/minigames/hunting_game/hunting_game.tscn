@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnsqbwlbpvvk1"]
+[gd_scene load_steps=10 format=3 uid="uid://dnsqbwlbpvvk1"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_0ats2"]
 [ext_resource type="Script" path="res://scripts/minigames/hunting_game/HuntingGameManager.cs" id="2_1nhnn"]
@@ -7,6 +7,46 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uitd1"]
 size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78bic"]
+size = Vector2(64, 10)
+
+[sub_resource type="Animation" id="Animation_aikkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClubPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4i6bn"]
+resource_name = "Swing"
+length = 0.46667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClubPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.233333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -2.0944, 1.06291, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3hf0"]
+_data = {
+"RESET": SubResource("Animation_aikkg"),
+"Swing": SubResource("Animation_4i6bn")
+}
 
 [node name="HuntingGame" instance=ExtResource("1_0ats2")]
 script = ExtResource("2_1nhnn")
@@ -25,4 +65,31 @@ shape = SubResource("RectangleShape2D_uitd1")
 [node name="Timer" type="Timer" parent="Hunter" index="2"]
 wait_time = 0.25
 
+[node name="ClubPivot" type="Node2D" parent="Hunter" index="3"]
+
+[node name="ClubAnchor" type="Node2D" parent="Hunter/ClubPivot" index="0"]
+position = Vector2(24, 14)
+
+[node name="ClubParent" type="Area2D" parent="Hunter/ClubPivot/ClubAnchor" index="0"]
+position = Vector2(10, -10)
+rotation = -0.785398
+scale = Vector2(1, 1)
+collision_layer = 2
+collision_mask = 2
+priority = 1
+
+[node name="Club" type="Sprite2D" parent="Hunter/ClubPivot/ClubAnchor/ClubParent" index="0"]
+scale = Vector2(2, 0.3)
+texture = ExtResource("3_gojru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hunter/ClubPivot/ClubAnchor/ClubParent" index="1"]
+shape = SubResource("RectangleShape2D_78bic")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hunter" index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_j3hf0")
+}
+
 [connection signal="timeout" from="Hunter/Timer" to="Hunter" method="OnTimerTimeout"]
+[connection signal="body_entered" from="Hunter/ClubPivot/ClubAnchor/ClubParent" to="Hunter" method="OnBodyEntered"]
+[connection signal="animation_finished" from="Hunter/AnimationPlayer" to="Hunter" method="OnAnimFinished"]

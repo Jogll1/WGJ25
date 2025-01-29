@@ -9,14 +9,19 @@ namespace WGJ25
 
 		private HuntingGameManager huntingGameManager;
 		private Timer timer;
+		private Area2D clubbingArea;
+		private AnimationPlayer anim;
 
 		private int moveSpeed = 600;
 		private bool canFire = true;
-		private Godot.Vector2 lastDir = new(1, 0);
+		private int halfSize = 24;
+		private float dirX = 1;
+		private bool isClubbing = false;
 
         public override void _Ready()
         {
             huntingGameManager = (HuntingGameManager)GetParent();
+			anim = GetNode<AnimationPlayer>("AnimationPlayer");
 			timer = GetNode<Timer>("Timer");
         }
 
@@ -28,8 +33,12 @@ namespace WGJ25
 				timer.Start();
 
 				// Spawn spear
-				Spear spear = (Spear)ObjectManager.SpawnObject(SPEAR_PATH, GlobalPosition, GetParent());
-				spear.SetVelocity(lastDir);
+				// Spear spear = (Spear)ObjectManager.SpawnObject(SPEAR_PATH, GlobalPosition, GetParent());
+				// spear.SetVelocity(lastDir);
+
+				// Club
+				isClubbing = true;
+				anim.Play("Swing");
 			}
         }
 
@@ -37,14 +46,50 @@ namespace WGJ25
         {
 			if (!huntingGameManager.GameEnded) 
 			{
-				Vector2 dir = Input.GetVector("move_left", "move_right", "move_up", "move_down").Normalized();
-				if (dir != Godot.Vector2.Zero) lastDir = dir;
+				Vector2 dir = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+				Velocity = dir.Normalized() * moveSpeed;
 
-				Velocity = dir * moveSpeed;
+				// Clamp pos
+				GlobalPosition = new Godot.Vector2(
+					Mathf.Clamp(GlobalPosition.X, halfSize, GameManager.SCREEN_WIDTH - halfSize),
+					Mathf.Clamp(GlobalPosition.Y, halfSize, GameManager.SCREEN_HEIGHT - halfSize)
+				);
 
 				MoveAndSlide();
+				SetAnim();
 			}
         }
+
+		public void OnBodyEntered(Node2D body)
+		{
+			if (body.IsInGroup("Dodo") && isClubbing)
+			{
+				huntingGameManager.DodosKilled++;
+				body.QueueFree();
+			}
+		}
+
+		public void SetAnim()
+		{
+			if (Input.IsActionJustPressed("move_left")) 
+			{
+				Scale = new (1, -1);
+				Rotation = Mathf.Pi;
+			}
+			if (Input.IsActionJustPressed("move_right")) 
+			{
+				Scale = new (1, 1);
+				Rotation = 0;
+			}
+		}
+
+		public void OnAnimFinished(string animName)
+		{
+			if(animName == "Swing")
+			{
+				isClubbing = false;
+			}
+		}
 
 		public void OnTimerTimeout() 
 		{
