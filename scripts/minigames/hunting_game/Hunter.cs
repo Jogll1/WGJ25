@@ -65,7 +65,7 @@ namespace WGJ25
 			if (body.IsInGroup("Dodo") && isClubbing)
 			{
 				huntingGameManager.DodosKilled++;
-				body.QueueFree();
+				((Dodo)body).Kill();
 			}
 		}
 

@@ -9,7 +9,7 @@ namespace WGJ25
 
 		private Hunter hunter;
 		public int DodosKilled;
-		private int dodoNum = 5;
+		private int dodoNum = 7;
 
 		public override void _Ready()
 		{

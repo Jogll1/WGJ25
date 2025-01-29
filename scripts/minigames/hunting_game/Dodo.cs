@@ -7,10 +7,11 @@ namespace WGJ25
 	{
 		private HuntingGameManager huntingGameManager;
 
-		private const float moveSpeed = 4f;
+		private const float moveSpeed = 5f;
 		private float minMoveTime = 1.5f;
 		private float maxMoveTime = 4f;
 		private int halfSize = 24;
+		private bool isDead;
 
 		private readonly Random random = new();
 		private Timer dirTimer;
@@ -21,11 +22,13 @@ namespace WGJ25
 
 			dirTimer = GetNode<Timer>("Timer");
 			RandomDirection();
+
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("default");
 		}
 
 		public override void _PhysicsProcess(double delta)
 		{
-			if (!huntingGameManager.GameEnded)
+			if (!huntingGameManager.GameEnded && !isDead)
 			{
 				if (GlobalPosition.X + halfSize >= GameManager.SCREEN_WIDTH || GlobalPosition.X - halfSize <= 0) 
 				{
@@ -45,7 +48,16 @@ namespace WGJ25
 				);
 
 				MoveAndCollide(Velocity);
+
+				SetAnim();
 			}
+		}
+
+		public void Kill() 
+		{
+			isDead = true;
+			GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("dead");
 		}
 
 		private void RandomDirection()
@@ -63,6 +75,20 @@ namespace WGJ25
 		private void OnTimerTimeout()
 		{
 			RandomDirection();
+		}
+
+		public void SetAnim()
+		{
+			if (Velocity.X > 0) 
+			{
+				Scale = new (1, -1);
+				Rotation = Mathf.Pi;
+			}
+			if (Velocity.X < 0) 
+			{
+				Scale = new (1, 1);
+				Rotation = 0;
+			}
 		}
 	}
 }

@@ -191,6 +191,13 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_lvrbe")
 hframes = 9
 
+[node name="Shadow" type="Sprite2D" parent="UI/UIParent/StopwatchParent/Sprite2D"]
+self_modulate = Color(0.111197, 0.111197, 0.111197, 0.509804)
+z_index = -3
+position = Vector2(1, 3)
+texture = ExtResource("2_lvrbe")
+hframes = 9
+
 [node name="StopwatchAnim" type="AnimationPlayer" parent="UI/UIParent/StopwatchParent"]
 libraries = {
 "": SubResource("AnimationLibrary_67i57")
