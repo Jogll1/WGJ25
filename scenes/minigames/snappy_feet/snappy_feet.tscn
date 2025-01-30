@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhmlw0tcabdke"]
+[gd_scene load_steps=7 format=3 uid="uid://dhmlw0tcabdke"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_3pxwd"]
 [ext_resource type="Script" path="res://scripts/minigames/snappy_feet/SnappyFeetManager.cs" id="2_m3fn2"]
 [ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="3_hsadt"]
+[ext_resource type="PackedScene" uid="uid://cxp64hrhiyo2x" path="res://scenes/minigames/snappy_feet/snappy_player.tscn" id="4_t7md7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04ea8"]
 size = Vector2(128, 32)
@@ -30,3 +31,5 @@ shape = SubResource("RectangleShape2D_vsejm")
 [node name="Sprite2D" type="Sprite2D" parent="RightShore" index="1"]
 scale = Vector2(3, 0.25)
 texture = ExtResource("3_hsadt")
+
+[node name="SnappyPlayer" parent="." index="3" instance=ExtResource("4_t7md7")]
