@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="1_5epqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqjtp"]
-size = Vector2(64, 128)
+size = Vector2(32, 64)
 
 [node name="SnappyPlayer" type="CharacterBody2D"]
 script = ExtResource("1_1lv3p")
@@ -13,5 +13,5 @@ script = ExtResource("1_1lv3p")
 shape = SubResource("RectangleShape2D_nqjtp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 1)
+scale = Vector2(0.25, 0.5)
 texture = ExtResource("1_5epqm")
