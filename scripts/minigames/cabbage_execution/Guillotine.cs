@@ -45,14 +45,6 @@ public partial class Guillotine : RigidBody2D
 		else if (isBeingDragged){
 			Godot.Vector2 dir = GetViewport().GetMousePosition() - this.Position;
 
-			//To prevent dragging below the board.
-			// if((sprite.Texture.GetHeight() / 2) + GlobalPosition.Y < board.GlobalPosition.Y){
-			// 	dir.Normalized();
-			// 	this.GlobalPosition += new Vector2 (0, dir.Y * (float)delta * moveSpeed);
-			// }
-			// else {
-			// 	this.GlobalPosition += new Vector2(0, 0);
-			// }
 			MoveAndCollide(new Vector2(0, -1) * (moveSpeed/2));
 			//If the player messes up so the guillotine isn't stuck
 			if(Input.IsActionJustReleased("move_up")){
