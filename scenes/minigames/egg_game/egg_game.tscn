@@ -13,6 +13,9 @@ size = Vector2(32, 32)
 [node name="EggGame" instance=ExtResource("1_gypub")]
 script = ExtResource("1_vslmh")
 
+[node name="StopwatchParent" parent="UI/UIParent" index="1"]
+rotation = 0.0
+
 [node name="Dinosaur" parent="." index="1" instance=ExtResource("1_xu4a4")]
 
 [node name="Floor" type="StaticBody2D" parent="." index="2"]

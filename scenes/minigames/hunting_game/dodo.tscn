@@ -55,7 +55,7 @@ autostart = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5dhyl")
-animation = &"dead"
 autoplay = "default"
+frame_progress = 0.817638
 
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

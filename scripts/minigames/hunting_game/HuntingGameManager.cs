@@ -34,7 +34,10 @@ namespace WGJ25
 
 		public override void _Process(double delta)
 		{
-			
+			if (DodosKilled == dodoNum)
+			{
+				OnStopwatchTimeout();
+			}
 		}
 
 		protected override void OnStopwatchTimeout()
