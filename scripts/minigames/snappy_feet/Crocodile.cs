@@ -6,13 +6,16 @@ namespace WGJ25{
 	{
 		public bool IsSnappy {get {return isSnappy;} set {isSnappy = value;}}
 		public bool ShouldJump {get {return shouldJump;}}
+		public Timer timer;
 		private bool isSnappy;
 		private bool shouldJump = false;
+		private bool changeSprite = false;
 		private Vector2 destination;
 		private CollisionShape2D hurtbox;
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
+			timer = GetNode<Timer>("Timer");
 			hurtbox = GetNode<CollisionShape2D>("Hurtbox/CollisionShape2D");
 			destination = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
 		}
@@ -22,10 +25,13 @@ namespace WGJ25{
 		{
 			if(isSnappy){
 				Modulate = new Color(1, 0, 0);
-				//hurtbox.collider.disabled
+				hurtbox.Disabled = false;
+				changeSprite = false;
 			}
 			else {
-				Modulate =  new Color(0, 1, 0);
+				hurtbox.Disabled = true;
+				if(changeSprite) Modulate = new Color(0, 0, 1);
+				else Modulate = new Color(0, 1, 0);
 			}
 		}
         public override void _PhysicsProcess(double delta)
@@ -41,8 +47,11 @@ namespace WGJ25{
         }
 
         public void OnArea2dBodyEntered(Node2D body){
-			GD.Print("Something is happening");
 			if(isSnappy) shouldJump = true;
+		}
+
+		public void OnTimerTimeout(){
+			if(!isSnappy) changeSprite = true;
 		}
 	}
 }

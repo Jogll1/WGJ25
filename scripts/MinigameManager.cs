@@ -17,7 +17,6 @@ namespace WGJ25
 
 		public override void _Ready()
 		{
-			base._Ready();
 			gameManager = GetNode<GameManager>("/root/GameManager");
 			popupText = GetNode<RichTextLabel>("UI/UIParent/PopupTextParent/PopupText");
 			stopwatchTimer = GetNode<Timer>("UI/UIParent/StopwatchParent/StopwatchTimer");

@@ -9,10 +9,12 @@ namespace WGJ25{
 		private StaticBody2D leftShore;
 		private StaticBody2D rightShore;
 		private SnappyPlayer player;
+		private Timer timer;
 
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{	
+			base._Ready();
 			leftShore = GetNode<StaticBody2D>("LeftShore");
 			if(leftShore != null) leftShore.GlobalPosition = new Vector2(0, GameManager.SCREEN_HEIGHT - 128);
 
@@ -21,6 +23,8 @@ namespace WGJ25{
 
 			player = GetNode<SnappyPlayer>("SnappyPlayer");
 			if(player != null) player.GlobalPosition = new Vector2(32, GameManager.SCREEN_HEIGHT - 180);
+
+			timer = GetNode<Timer>("Timer");
 
 			croc = new Crocodile[6];
 			for(int i = 0; i < croc.Length; i++){
@@ -39,8 +43,11 @@ namespace WGJ25{
 			for(int i = 0; i < croc.Length; i++){
 				if(croc[i].ShouldJump) player.collider.Disabled = true;
 			}
+			//Pause the timer so we have no more croc state changes when the player dies.
+			if(player.IsDead){
+				timer.Paused = true;
+			}
 			//Ending the game if the player falls out of the map
-			//Doesn't work for now
 			if(player.GlobalPosition.Y > GameManager.SCREEN_HEIGHT + 32){
 				EndGame();
 			}
@@ -49,6 +56,7 @@ namespace WGJ25{
 		public void OnTimerTimeout(){
 			for(int i = 0; i < croc.Length; i++){
 				croc[i].IsSnappy = !croc[i].IsSnappy;
+				croc[i].timer.Start();
 			}
 		}
 
