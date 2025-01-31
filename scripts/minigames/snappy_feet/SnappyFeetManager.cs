@@ -20,7 +20,7 @@ namespace WGJ25{
 			if(rightShore != null) rightShore.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH - 192,GameManager.SCREEN_HEIGHT - 32);
 
 			player = GetNode<SnappyPlayer>("SnappyPlayer");
-			if(player != null) player.GlobalPosition = new Vector2(16, GameManager.SCREEN_HEIGHT - 128);
+			if(player != null) player.GlobalPosition = new Vector2(32, GameManager.SCREEN_HEIGHT - 180);
 
 			croc = new Crocodile[6];
 			for(int i = 0; i < croc.Length; i++){
@@ -34,7 +34,29 @@ namespace WGJ25{
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
 		public override void _Process(double delta)
 		{
+			//Disabling the players collider for proper snapping effect so the crocodile
+			//lunging doesn't send the player flying.
+			for(int i = 0; i < croc.Length; i++){
+				if(croc[i].ShouldJump) player.collider.Disabled = true;
+			}
+			//Ending the game if the player falls out of the map
+			//Doesn't work for now
+			if(player.GlobalPosition.Y > GameManager.SCREEN_HEIGHT + 32){
+				EndGame();
+			}
+		}
 
+		public void OnTimerTimeout(){
+			for(int i = 0; i < croc.Length; i++){
+				croc[i].IsSnappy = !croc[i].IsSnappy;
+			}
+		}
+
+		protected override void OnStopwatchTimeout()
+		{
+			base.OnStopwatchTimeout();
+
+			gameManager.LoadNextGame();
 		}
 	}
 }

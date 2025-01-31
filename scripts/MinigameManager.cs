@@ -17,6 +17,7 @@ namespace WGJ25
 
 		public override void _Ready()
 		{
+			base._Ready();
 			gameManager = GetNode<GameManager>("/root/GameManager");
 			popupText = GetNode<RichTextLabel>("UI/UIParent/PopupTextParent/PopupText");
 			stopwatchTimer = GetNode<Timer>("UI/UIParent/StopwatchParent/StopwatchTimer");
@@ -38,6 +39,14 @@ namespace WGJ25
 			{
 				StartStopwatch();
 			}
+		}
+
+		//Use to prematurely end the game if some failstate has been reached
+		protected void EndGame(){
+			stopwatchTimer.Stop();
+			GameEnded = true;
+			gameManager.LoadNextGame();
+			GD.Print("Game finished!");
 		}
 
 		protected void StartStopwatch() 
