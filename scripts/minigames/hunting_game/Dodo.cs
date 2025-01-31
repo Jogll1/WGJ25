@@ -7,7 +7,7 @@ namespace WGJ25
 	{
 		private HuntingGameManager huntingGameManager;
 
-		private const float moveSpeed = 5f;
+		private const float moveSpeed = 6.5f;
 		private float minMoveTime = 1.5f;
 		private float maxMoveTime = 4f;
 		private int halfSize = 24;

@@ -9,9 +9,6 @@
 [node name="Minigame" instance=ExtResource("1_h4gvb")]
 script = ExtResource("2_o68nd")
 
-[node name="UIParent" parent="UI" index="0"]
-mouse_filter = 2
-
 [node name="PopupTextParent" parent="UI/UIParent" index="0"]
 offset_left = 3.0
 offset_top = 9.0
