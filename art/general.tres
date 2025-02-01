@@ -1,7 +1,15 @@
-[gd_resource type="Theme" format=3 uid="uid://cy5t81wiiv218"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cy5t81wiiv218"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jy1iy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iycng"]
 
 [resource]
 default_font_size = 80
+Button/colors/font_hover_color = Color(0.749778, 0.749781, 0.749781, 1)
+Button/constants/outline_size = 0
+Button/styles/focus = SubResource("StyleBoxEmpty_jy1iy")
+Button/styles/pressed = SubResource("StyleBoxEmpty_iycng")
 RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
 RichTextLabel/constants/shadow_offset_x = 4
 RichTextLabel/constants/shadow_offset_y = 4

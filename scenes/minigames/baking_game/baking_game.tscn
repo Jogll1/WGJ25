@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://datts7e1y518s"]
+
+[ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_j4voa"]
+[ext_resource type="Script" path="res://scripts/minigames/baking_game/BakingGameManager.cs" id="2_1hjec"]
+[ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="3_4wlla"]
+[ext_resource type="Script" path="res://scripts/minigames/baking_game/Knob.cs" id="4_lhxvf"]
+[ext_resource type="Texture2D" uid="uid://bhequd45n1bty" path="res://art/minigames/baking/Knob.png" id="4_lqayk"]
+
+[node name="BakingGame" instance=ExtResource("1_j4voa")]
+script = ExtResource("2_1hjec")
+
+[node name="Oven" type="Sprite2D" parent="." index="1"]
+modulate = Color(0.427493, 0.427493, 0.427493, 1)
+position = Vector2(646, 541)
+scale = Vector2(25, 15)
+texture = ExtResource("3_4wlla")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
+
+[node name="UIParent" type="Control" parent="CanvasLayer" index="0"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Knob" type="TextureButton" parent="CanvasLayer/UIParent" index="0"]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 349.0
+offset_right = 330.0
+offset_bottom = 381.0
+scale = Vector2(3, 3)
+pivot_offset = Vector2(16, 16)
+keep_pressed_outside = true
+texture_normal = ExtResource("4_lqayk")
+ignore_texture_size = true
+script = ExtResource("4_lhxvf")
+
+[connection signal="button_down" from="CanvasLayer/UIParent/Knob" to="CanvasLayer/UIParent/Knob" method="OnKnobDown"]

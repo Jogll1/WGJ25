@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://1qbtwqkvoq32"]
+
+[ext_resource type="Script" path="res://scripts/minigames/hunting_game/Spear.cs" id="1_nrs70"]
+[ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="1_xxxwu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p54yl"]
+size = Vector2(53.3333, 20)
+
+[node name="Spear" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 2
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_nrs70")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 0.3)
+texture = ExtResource("1_xxxwu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_p54yl")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

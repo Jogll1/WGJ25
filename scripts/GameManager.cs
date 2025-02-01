@@ -7,7 +7,7 @@ namespace WGJ25
 	public partial class GameManager : Node2D
 	{
 		// Array of all minigame scenes
-		private readonly string[] scenes = {"egg_game/egg_game", "cabbage_execution/cabbage_execution", "hunting_game/hunting_game"};
+		private readonly string[] scenes = {"egg_game/egg_game", "cabbage_execution/cabbage_execution", "hunting_game/hunting_game", "snappy_feet/snappy_feet"};
 		private string[] selectedScenes;
 
 		// References
@@ -19,6 +19,8 @@ namespace WGJ25
 		public const int SCREEN_HEIGHT = 720;
 
 		private int nextGame = 0; // Index of the next game
+
+		private int[] scores = new int[5];
 
 		public override void _EnterTree()
 		{
@@ -40,7 +42,7 @@ namespace WGJ25
         public override void _Process(double delta) 
 		{
 			// To test, if space is pressed, load the next game
-			if (Input.IsActionJustPressed("ui_select")) 
+			if (Input.IsActionJustPressed("Q")) 
 			{
 				LoadNextGame();
 			}
@@ -81,9 +83,15 @@ namespace WGJ25
 		{
 			if (nextGame < GAMES_AMOUNT)
 			{
+				// Load next game
 				GD.Print($"{nextGame + 1}. Loading {selectedScenes[nextGame]}");
 				sceneTransition.ChangeScene($"res://scenes/minigames/{selectedScenes[nextGame]}.tscn");
 				nextGame++;
+			}
+			else 
+			{
+				// Load mixing game
+				sceneTransition.ChangeScene($"res://scenes/minigames/baking_game/baking_game.tscn");
 			}
 		}
 

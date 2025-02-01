@@ -1,22 +1,125 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnsqbwlbpvvk1"]
+[gd_scene load_steps=11 format=3 uid="uid://dnsqbwlbpvvk1"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_0ats2"]
 [ext_resource type="Script" path="res://scripts/minigames/hunting_game/HuntingGameManager.cs" id="2_1nhnn"]
 [ext_resource type="Script" path="res://scripts/minigames/hunting_game/Hunter.cs" id="3_8hnw2"]
 [ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="3_gojru"]
+[ext_resource type="Texture2D" uid="uid://cniahl5r5ubmx" path="res://art/minigames/hunting/Club.png" id="5_1p7il"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uitd1"]
-size = Vector2(64, 64)
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78bic"]
+size = Vector2(79.9031, 20.5061)
+
+[sub_resource type="Animation" id="Animation_aikkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClubPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClubPivot/ClubAnchor/ClubParent:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4i6bn"]
+resource_name = "Swing"
+length = 0.46667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClubPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.233333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -2.0944, 1.06291, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClubPivot/ClubAnchor/ClubParent:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3hf0"]
+_data = {
+"RESET": SubResource("Animation_aikkg"),
+"Swing": SubResource("Animation_4i6bn")
+}
 
 [node name="HuntingGame" instance=ExtResource("1_0ats2")]
 script = ExtResource("2_1nhnn")
 
 [node name="Hunter" type="CharacterBody2D" parent="." index="1"]
+motion_mode = 1
 script = ExtResource("3_8hnw2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hunter" index="0"]
-scale = Vector2(2, 2)
+z_index = 3
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_gojru")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hunter" index="1"]
 shape = SubResource("RectangleShape2D_uitd1")
+
+[node name="Timer" type="Timer" parent="Hunter" index="2"]
+wait_time = 0.25
+
+[node name="ClubPivot" type="Node2D" parent="Hunter" index="3"]
+
+[node name="ClubAnchor" type="Node2D" parent="Hunter/ClubPivot" index="0"]
+position = Vector2(24, 14)
+
+[node name="ClubParent" type="Area2D" parent="Hunter/ClubPivot/ClubAnchor" index="0"]
+position = Vector2(10, -10)
+rotation = -0.785398
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+priority = 1
+
+[node name="Club" type="Sprite2D" parent="Hunter/ClubPivot/ClubAnchor/ClubParent" index="0"]
+z_index = 3
+rotation = 1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("5_1p7il")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hunter/ClubPivot/ClubAnchor/ClubParent" index="1"]
+z_index = 3
+position = Vector2(-1.06066, 1.76776)
+shape = SubResource("RectangleShape2D_78bic")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hunter" index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_j3hf0")
+}
+
+[connection signal="timeout" from="Hunter/Timer" to="Hunter" method="OnTimerTimeout"]
+[connection signal="body_entered" from="Hunter/ClubPivot/ClubAnchor/ClubParent" to="Hunter" method="OnBodyEntered"]
+[connection signal="animation_finished" from="Hunter/AnimationPlayer" to="Hunter" method="OnAnimFinished"]

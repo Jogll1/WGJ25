@@ -7,8 +7,8 @@ namespace WGJ25
 	public partial class Dinosaur : RigidBody2D
 	{
 		// Scene paths
-		private readonly string EGG_SCENE_PATH = "res://scenes/minigames/egg_game/egg.tscn";
-		private readonly string POOP_SCENE_PATH = "res://scenes/minigames/egg_game/poop.tscn";
+		private const string EGG_SCENE_PATH = "res://scenes/minigames/egg_game/egg.tscn";
+		private const string POOP_SCENE_PATH = "res://scenes/minigames/egg_game/poop.tscn";
 
 		// Variables
 		private const int width = 128;
