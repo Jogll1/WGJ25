@@ -20,6 +20,12 @@ texture = ExtResource("2_mexxh")
 position = Vector2(-25.5, 14)
 scale = Vector2(1, 4)
 
+[node name="Shadow" type="Sprite2D" parent="Sprite2D"]
+self_modulate = Color(0.10748, 0.10748, 0.10748, 0.513726)
+z_index = -1
+position = Vector2(2, 2)
+texture = ExtResource("2_mexxh")
+
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true

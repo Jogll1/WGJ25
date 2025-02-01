@@ -9,7 +9,7 @@ namespace WGJ25
 
 		private Hunter hunter;
 		public int DodosKilled;
-		private int dodoNum = 7;
+		private int dodoNum = 8;
 
 		public override void _Ready()
 		{
@@ -34,7 +34,10 @@ namespace WGJ25
 
 		public override void _Process(double delta)
 		{
-			
+			// if (DodosKilled == dodoNum)
+			// {
+			// 	OnStopwatchTimeout();
+			// }
 		}
 
 		protected override void OnStopwatchTimeout()
