@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dssom5enjxvi7"]
+
+[ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="1_5jwaw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5occo"]
+bounce = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l22r"]
+size = Vector2(64, 64)
+
+[node name="Ingredient" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_5occo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_5jwaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8l22r")
