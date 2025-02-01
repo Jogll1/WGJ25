@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhmlw0tcabdke"]
+[gd_scene load_steps=8 format=3 uid="uid://dhmlw0tcabdke"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_3pxwd"]
 [ext_resource type="Script" path="res://scripts/minigames/snappy_feet/SnappyFeetManager.cs" id="2_m3fn2"]
@@ -10,6 +10,9 @@ size = Vector2(128, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsejm"]
 size = Vector2(384, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfhlu"]
+size = Vector2(384, 128)
 
 [node name="SnappyFeet" instance=ExtResource("1_3pxwd")]
 script = ExtResource("2_m3fn2")
@@ -38,4 +41,10 @@ texture = ExtResource("3_hsadt")
 wait_time = 1.5
 autostart = true
 
+[node name="End" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End" index="0"]
+shape = SubResource("RectangleShape2D_kfhlu")
+
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
+[connection signal="area_entered" from="End" to="." method="OnEndEntered"]

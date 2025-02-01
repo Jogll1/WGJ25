@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
 
 namespace WGJ25{
 	public partial class Crocodile : CharacterBody2D
@@ -12,10 +14,12 @@ namespace WGJ25{
 		private bool changeSprite = false;
 		private Vector2 destination;
 		private CollisionShape2D hurtbox;
+		private Area2D area;
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
 			timer = GetNode<Timer>("Timer");
+			area = GetNode<Area2D>("Area2D");
 			hurtbox = GetNode<CollisionShape2D>("Hurtbox/CollisionShape2D");
 			destination = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
 		}
@@ -33,6 +37,13 @@ namespace WGJ25{
 				if(changeSprite) Modulate = new Color(0, 0, 1);
 				else Modulate = new Color(0, 1, 0);
 			}
+
+			foreach(Node2D a in area.GetOverlappingAreas()){
+				//GD.Print($"{a.Name}");
+				if(a.IsInGroup("player") && isSnappy){
+					shouldJump = true;
+				}
+			}
 		}
         public override void _PhysicsProcess(double delta)
         {
@@ -47,7 +58,10 @@ namespace WGJ25{
         }
 
         public void OnArea2dBodyEntered(Node2D body){
-			if(isSnappy) shouldJump = true;
+			if(isSnappy) {
+				GD.Print("Entered");
+				shouldJump = true;
+			}
 		}
 
 		public void OnTimerTimeout(){
