@@ -67,7 +67,7 @@ namespace WGJ25
 			do
 			{
 				Velocity = new Godot.Vector2(random.Next(-1, 2), random.Next(-1, 2)).Normalized() * moveSpeed;
-			} while (Velocity == Godot.Vector2.Zero);
+			} while (Velocity.X == 0 || Velocity.Y == 0);
 
 			dirTimer.Start();
 		}

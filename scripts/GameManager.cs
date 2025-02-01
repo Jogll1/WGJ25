@@ -20,6 +20,8 @@ namespace WGJ25
 
 		private int nextGame = 0; // Index of the next game
 
+		private int[] scores = new int[5];
+
 		public override void _EnterTree()
 		{
 			sceneTransition = GetNode<SceneTransition>("SceneTransition");
@@ -40,10 +42,10 @@ namespace WGJ25
         public override void _Process(double delta) 
 		{
 			// To test, if space is pressed, load the next game
-			// if (Input.IsActionJustPressed("Q")) 
-			// {
-			// 	LoadNextGame();
-			// }
+			if (Input.IsActionJustPressed("Q")) 
+			{
+				LoadNextGame();
+			}
 		}
 
 		private string[] SelectGames() 
@@ -81,9 +83,15 @@ namespace WGJ25
 		{
 			if (nextGame < GAMES_AMOUNT)
 			{
+				// Load next game
 				GD.Print($"{nextGame + 1}. Loading {selectedScenes[nextGame]}");
 				sceneTransition.ChangeScene($"res://scenes/minigames/{selectedScenes[nextGame]}.tscn");
 				nextGame++;
+			}
+			else 
+			{
+				// Load mixing game
+				sceneTransition.ChangeScene($"res://scenes/minigames/baking_game/baking_game.tscn");
 			}
 		}
 
