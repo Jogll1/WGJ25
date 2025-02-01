@@ -7,7 +7,7 @@ namespace WGJ25
 	public partial class GameManager : Node2D
 	{
 		// Array of all minigame scenes
-		private readonly string[] scenes = {"egg_game/egg_game", "cabbage_execution/cabbage_execution", "hunting_game/hunting_game"};
+		private readonly string[] scenes = {"egg_game/egg_game", "cabbage_execution/cabbage_execution", "hunting_game/hunting_game", "snappy_feet/snappy_feet"};
 		private string[] selectedScenes;
 
 		// References

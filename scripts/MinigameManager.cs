@@ -40,6 +40,14 @@ namespace WGJ25
 			}
 		}
 
+		//Use to prematurely end the game if some failstate has been reached
+		protected void EndGame(){
+			stopwatchTimer.Stop();
+			GameEnded = true;
+			gameManager.LoadNextGame();
+			GD.Print("Game finished!");
+		}
+
 		protected void StartStopwatch() 
 		{
 			// Call this to start the game's 8 second timer
