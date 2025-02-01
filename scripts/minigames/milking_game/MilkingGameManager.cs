@@ -14,12 +14,13 @@ namespace WGJ25
 		
 		public void IncrementCount()
 		{
-			score += 20;
+			score += 10;
 		}
 		
 		protected override void OnStopwatchTimeout()
 		{
 			base.OnStopwatchTimeout();;
+			if(score > 100) score = 100;
 			GD.Print($"Score: {score}");
 
 			gameManager.LoadRandomGame();

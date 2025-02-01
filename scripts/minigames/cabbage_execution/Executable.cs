@@ -9,15 +9,15 @@ public partial class Executable : Sprite2D
 	private bool isCabbage = false;
 
 	//Checks if the player is clicking on the sprite and acts accordingly
-    public override void _Input(InputEvent @event)
-    {
+	public override void _Input(InputEvent @event)
+	{
 		//Got rid of clicking on the executable to change it. Its quicker and more fun just to press the
 		//movement buttons
-        if( canBeClicked && (Input.IsActionJustPressed("move_left") ||Input.IsActionJustPressed("move_right"))){
+		if( canBeClicked && (Input.IsActionJustPressed("move_left") ||Input.IsActionJustPressed("move_right"))){
 				GD.Print("You clicked on the executable");//For debugging
 				GetNextExecutable();
 			}
-    }
+	}
 
 	public void GetNextExecutable(){
 		//For now we just randomly change the colour of the sprite instead of loading a new one.
