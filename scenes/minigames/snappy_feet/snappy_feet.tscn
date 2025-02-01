@@ -38,7 +38,7 @@ texture = ExtResource("3_hsadt")
 [node name="SnappyPlayer" parent="." index="3" instance=ExtResource("4_t7md7")]
 
 [node name="Timer" type="Timer" parent="." index="4"]
-wait_time = 1.5
+wait_time = 1.6
 autostart = true
 
 [node name="End" type="Area2D" parent="." index="5"]
