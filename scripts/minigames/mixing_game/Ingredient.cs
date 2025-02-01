@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace WGJ25{
 	public partial class Ingredient : RigidBody2D
 	{
-		public int health = 3;
+		public int health = 2;
 		private MixingGameManager manager;
 		private const string CRUSHED_INGREDIENT_SCENE_PATH = "res://scenes/minigames/mixing_game/CrushedIngredient.tscn";
 		// Called when the node enters the scene tree for the first time.
