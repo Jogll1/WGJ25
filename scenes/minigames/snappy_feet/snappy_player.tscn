@@ -7,14 +7,16 @@
 size = Vector2(32, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_moabl"]
-size = Vector2(32, 20)
+size = Vector2(32, 40)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1bdx"]
 radius = 32.0
 height = 90.0
 
-[node name="SnappyPlayer" type="RigidBody2D"]
+[node name="SnappyPlayer" type="RigidBody2D" groups=["player"]]
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_1lv3p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -24,8 +26,8 @@ shape = SubResource("RectangleShape2D_nqjtp")
 scale = Vector2(0.25, 0.5)
 texture = ExtResource("1_5epqm")
 
-[node name="GroundChecker" type="Area2D" parent="."]
-position = Vector2(0, 42)
+[node name="GroundChecker" type="Area2D" parent="." groups=["player"]]
+position = Vector2(0, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundChecker"]
 shape = SubResource("RectangleShape2D_moabl")

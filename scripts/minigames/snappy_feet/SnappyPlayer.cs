@@ -5,7 +5,7 @@ namespace WGJ25{
     //TODO: Add a death "animation" that just makes the player fall down once hit by a crocodile
 	public partial class SnappyPlayer : RigidBody2D
 	{
-        public bool IsDead {get{return dead;}}
+        public bool IsDead {get{return dead;} set {dead = value;}}
         public CollisionShape2D collider;
         private bool isColliding = true;
         private bool dead = false;

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 namespace WGJ25{
 	public partial class SnappyFeetManager : MinigameManager
@@ -10,6 +11,8 @@ namespace WGJ25{
 		private StaticBody2D rightShore;
 		private SnappyPlayer player;
 		private Timer timer;
+		private Area2D end;
+		private bool endReached = false;
 
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
@@ -24,6 +27,9 @@ namespace WGJ25{
 			player = GetNode<SnappyPlayer>("SnappyPlayer");
 			if(player != null) player.GlobalPosition = new Vector2(32, GameManager.SCREEN_HEIGHT - 180);
 
+			end = GetNode<Area2D>("End");
+			if(end != null) end.GlobalPosition = new Vector2(rightShore.GlobalPosition.X, rightShore.GlobalPosition.Y - 64);
+
 			timer = GetNode<Timer>("Timer");
 
 			croc = new Crocodile[6];
@@ -33,6 +39,8 @@ namespace WGJ25{
 				else temp.IsSnappy = true;
 				croc[i] = temp;
 			}
+
+			SetPopupText("Jump Over the Crocodiles!");
 		}
 
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,11 +49,17 @@ namespace WGJ25{
 			//Disabling the players collider for proper snapping effect so the crocodile
 			//lunging doesn't send the player flying.
 			for(int i = 0; i < croc.Length; i++){
-				if(croc[i].ShouldJump) player.collider.Disabled = true;
+				if(croc[i].ShouldJump) {
+					player.collider.Disabled = true;
+					player.IsDead = true;
+					player.Sleeping = true;
+				}
 			}
 			//Pause the timer so we have no more croc state changes when the player dies.
 			if(player.IsDead){
 				timer.Paused = true;
+				// player.GlobalPosition = new Vector2(32, GameManager.SCREEN_HEIGHT - 180);
+				// player.Sleeping = false;
 			}
 			//Ending the game if the player falls out of the map
 			if(player.GlobalPosition.Y > GameManager.SCREEN_HEIGHT + 32){
@@ -58,6 +72,11 @@ namespace WGJ25{
 				croc[i].IsSnappy = !croc[i].IsSnappy;
 				croc[i].timer.Start();
 			}
+		}
+
+		public void OnEndEntered(Area2D area){
+			endReached = true;
+			GD.Print("You got to the end!");
 		}
 
 		protected override void OnStopwatchTimeout()
