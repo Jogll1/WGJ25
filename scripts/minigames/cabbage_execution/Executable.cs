@@ -30,7 +30,7 @@ public partial class Executable : RigidBody2D
 				
 				GetNextExecutable();
 			}
-    }
+	}
 
 	public void GetNextExecutable(){
 		//For now we just randomly change the colour of the sprite instead of loading a new one.
