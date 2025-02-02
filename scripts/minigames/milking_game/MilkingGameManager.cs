@@ -23,7 +23,7 @@ namespace WGJ25
 			if(score > 100) score = 100;
 			GD.Print($"Score: {score}");
 
-			gameManager.LoadRandomGame();
+			gameManager.LoadNextGame();
 		}
 	}
 }
