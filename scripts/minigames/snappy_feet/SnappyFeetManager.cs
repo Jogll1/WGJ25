@@ -36,8 +36,8 @@ namespace WGJ25{
 			croc = new Crocodile[6];
 			for(int i = 0; i < croc.Length; i++){
 				Crocodile temp = (Crocodile)ObjectManager.SpawnObject(CROC_PATH, new Vector2(128*(i+1), GameManager.SCREEN_HEIGHT - 64), this);
-				if(i % 2 == 0) temp.IsSnappy = false;
-				else temp.IsSnappy = true;
+				if(i % 2 == 0) temp.IsSnappy = true;
+				else temp.IsSnappy = false;
 				croc[i] = temp;
 			}
 
@@ -47,17 +47,11 @@ namespace WGJ25{
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
 		public override void _Process(double delta)
 		{
-			//Disabling the players collider for proper snapping effect so the crocodile
-			//lunging doesn't send the player flying.
-			for(int i = 0; i < croc.Length; i++){
-				if(croc[i].ShouldJump) {
-					player.collider.Disabled = true;
-					if(!player.caught)player.Sleeping = true;
-				}
-			}
 			if(!player.IsDead && player.caught){
 				GD.Print("This should be doing something");
 				player.IsDead = true;
+				player.Sleeping = false;
+				player.collider.Disabled = true;
 				player.ApplyImpulse(new Vector2(0, -200));
 			}
 			//Pause the timer so we have no more croc state changes when the player dies.
