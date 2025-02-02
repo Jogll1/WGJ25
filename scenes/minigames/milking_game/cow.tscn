@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://be4lck8syvj60"]
 
-[ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="1_o7ni0"]
+[ext_resource type="Texture2D" uid="uid://cws2j26kmc7u7" path="res://art/minigames/milking/cow.png" id="1_ap8hb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nple6"]
 size = Vector2(905, 190)
@@ -9,8 +9,9 @@ size = Vector2(905, 190)
 position = Vector2(-564.784, -57.7942)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(7.02761, 1.42969)
-texture = ExtResource("1_o7ni0")
+position = Vector2(1.784, 65.7942)
+scale = Vector2(28.6, 17.65)
+texture = ExtResource("1_ap8hb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.283997, 0.794205)
