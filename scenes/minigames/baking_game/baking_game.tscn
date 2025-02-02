@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://datts7e1y518s"]
+[gd_scene load_steps=6 format=3 uid="uid://cwexbmq15p8wa"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_j4voa"]
 [ext_resource type="Script" path="res://scripts/minigames/baking_game/BakingGameManager.cs" id="2_1hjec"]

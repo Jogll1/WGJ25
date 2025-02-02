@@ -58,6 +58,7 @@ namespace WGJ25
 			isDead = true;
 			GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
 			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("dead");
+			ZIndex = -3;
 		}
 
 		private void RandomDirection()

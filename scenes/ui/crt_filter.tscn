@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp5tmaw3spdpr"]
+
+[ext_resource type="Shader" path="res://art/crt.gdshader" id="1_qbvyl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_llidr"]
+shader = ExtResource("1_qbvyl")
+
+[node name="CRT" type="CanvasLayer"]
+layer = 3
+
+[node name="CRTFilter" type="ColorRect" parent="."]
+z_index = 10
+material = SubResource("ShaderMaterial_llidr")
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 1

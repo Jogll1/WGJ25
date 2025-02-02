@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://mc6ixurg3r01"]
+[gd_scene load_steps=11 format=3 uid="uid://mc6ixurg3r01"]
 
 [ext_resource type="Theme" uid="uid://cy5t81wiiv218" path="res://art/general.tres" id="2_futol"]
 [ext_resource type="Texture2D" uid="uid://b4yaydy3h6qcc" path="res://art/ui/stopwatch.png" id="2_lvrbe"]
+[ext_resource type="PackedScene" uid="uid://dp5tmaw3spdpr" path="res://scenes/ui/crt_filter.tscn" id="3_bka51"]
 
 [sub_resource type="Animation" id="Animation_vw2oh"]
 length = 0.001
@@ -254,3 +255,6 @@ hframes = 9
 libraries = {
 "": SubResource("AnimationLibrary_67i57")
 }
+
+[node name="CRTFilter" parent="." instance=ExtResource("3_bka51")]
+layer = 2

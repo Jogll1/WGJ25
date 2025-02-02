@@ -13,9 +13,16 @@ size = Vector2(32, 32)
 [node name="EggGame" instance=ExtResource("1_gypub")]
 script = ExtResource("1_vslmh")
 
-[node name="Dinosaur" parent="." index="1" instance=ExtResource("1_xu4a4")]
+[node name="Background" type="Sprite2D" parent="." index="0"]
+modulate = Color(1, 0.94902, 0.937255, 1)
+z_index = -10
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("6_orw0l")
 
-[node name="Floor" type="StaticBody2D" parent="." index="2"]
+[node name="Dinosaur" parent="." index="2" instance=ExtResource("1_xu4a4")]
+
+[node name="Floor" type="StaticBody2D" parent="." index="3"]
 position = Vector2(640, 753)
 
 [node name="Floor" type="Sprite2D" parent="Floor" index="0"]
@@ -26,11 +33,4 @@ texture = ExtResource("3_dgjmo")
 scale = Vector2(40, 2)
 shape = SubResource("RectangleShape2D_mc12p")
 
-[node name="EggPlayer" parent="." index="3" instance=ExtResource("4_3bmf2")]
-
-[node name="Background" type="Sprite2D" parent="." index="4"]
-modulate = Color(1, 0.94902, 0.937255, 1)
-z_index = -10
-position = Vector2(640, 360)
-scale = Vector2(2, 2)
-texture = ExtResource("6_orw0l")
+[node name="EggPlayer" parent="." index="4" instance=ExtResource("4_3bmf2")]
