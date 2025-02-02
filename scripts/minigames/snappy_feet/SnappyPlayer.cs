@@ -25,27 +25,14 @@ namespace WGJ25{
 			}
         }
 
-        public override void _Process(double delta)
-        {
-            // if(Sleeping){
-            //     GD.Print("Timer Starting");
-            //     timer.Start();
-            // }
-        }
-
         public void OnArea2dBodyEntered(Node2D body){
             isColliding = true;
         }
 
         public void HurtboxEntered(Area2D area){
             GD.Print("Died");
-            //dead = true;
             if(!caught) Sleeping = true;
             caught = true;
         }
-        // public void OnTimerTimeout(){
-        //     GD.Print("Applying Impulse");
-        //     ApplyImpulse(new Vector2(0, -100));
-        // }
     }
 }
