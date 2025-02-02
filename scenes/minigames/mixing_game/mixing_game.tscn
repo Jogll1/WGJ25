@@ -1,24 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://mqgljun8827n"]
+[gd_scene load_steps=8 format=3 uid="uid://mqgljun8827n"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_cg7md"]
 [ext_resource type="Script" path="res://scripts/minigames/mixing_game/MixingGameManager.cs" id="2_bnxw6"]
 [ext_resource type="Texture2D" uid="uid://b3addy3swrybl" path="res://art/minigames/bowl.png" id="3_88s1d"]
+[ext_resource type="PackedScene" uid="uid://bta6vubhdeut2" path="res://scenes/minigames/mixing_game/Ladle.tscn" id="4_nt26t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df1lm"]
-size = Vector2(34.55, 355)
+size = Vector2(7000, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lonm0"]
+size = Vector2(2000, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncqae"]
+size = Vector2(2000, 300)
 
 [node name="MixingGame" instance=ExtResource("1_cg7md")]
 script = ExtResource("2_bnxw6")
 
 [node name="Bowl" type="StaticBody2D" parent="." index="1"]
-position = Vector2(640, 560)
+z_index = -10
+position = Vector2(641, 560)
 scale = Vector2(0.2, 0.2)
+collision_layer = 5
+collision_mask = 5
 
 [node name="BowlSprite" type="Sprite2D" parent="Bowl" index="0"]
+position = Vector2(0, -300)
 rotation = 0.0698132
 texture = ExtResource("3_88s1d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bowl" index="1"]
-position = Vector2(37.5, 617.5)
-scale = Vector2(100, 1)
+[node name="Bottom" type="CollisionShape2D" parent="Bowl" index="1"]
+position = Vector2(0, 650)
 shape = SubResource("RectangleShape2D_df1lm")
+
+[node name="Left" type="CollisionShape2D" parent="Bowl" index="2"]
+position = Vector2(-1480, -35)
+rotation = 1.0472
+shape = SubResource("RectangleShape2D_lonm0")
+
+[node name="Right" type="CollisionShape2D" parent="Bowl" index="3"]
+position = Vector2(1480, -35)
+rotation = 2.0944
+shape = SubResource("RectangleShape2D_ncqae")
+
+[node name="Ladle" parent="." index="2" instance=ExtResource("4_nt26t")]
+position = Vector2(597, 324)

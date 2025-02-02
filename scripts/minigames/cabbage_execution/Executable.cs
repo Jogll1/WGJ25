@@ -9,17 +9,18 @@ public partial class Executable : RigidBody2D
 	private bool canBeClicked = true;
 	private bool isCabbage = false;
     private bool executed = false;
-
-    public override void _Process(double delta)
+	private Sprite2D sprite;
+	private Texture2D cabbage;
+	private Texture2D noble;
+    public override void _Ready()
     {
-        if(executed){
-			//this.GravityScale = 1f;
-			//this.ApplyImpulse(new Vector2(0, -20));
-		}
+        sprite = GetNode<Sprite2D>("Sprite2D");
+		cabbage = GD.Load<Texture2D>("res://art/minigames/cabbage/Cabbage.png");
+		noble = GD.Load<Texture2D>("res://art/minigames/cabbage/noble.png");
+		GetNextExecutable();
     }
 
     //Checks if the player is clicking on the sprite and acts accordingly
-
     public override void _Input(InputEvent @event)
     {
 		//Got rid of clicking on the executable to change it. Its quicker and more fun just to press the
@@ -37,11 +38,11 @@ public partial class Executable : RigidBody2D
 		Random random = new();
 		int index = random.Next(2);
 		if(index == 0){
-			Modulate = new Color(0, 1, 0);
+			sprite.Texture = cabbage;
 			isCabbage = true;
 		}
 		else {
-			Modulate = new Color(1, 1, 1);
+			sprite.Texture = noble;
 			isCabbage = false;
 		}
 	}

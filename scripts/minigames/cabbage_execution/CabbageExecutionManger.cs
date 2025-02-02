@@ -49,9 +49,7 @@ namespace WGJ25{
 			if(guillotine.IsFalling && executable.IsCabbage) cabbageCount++;
 			else if (guillotine.IsFalling && !executable.IsCabbage) nobleCount++;
 			if(!guillotine.CanBeDragged && !guillotine.IsFalling && executable.Executed){
-				Executable temp = (Executable)ObjectManager.SpawnObject(EXECUTABLE_PATH, new Vector2(GameManager.SCREEN_WIDTH / 2, GameManager.SCREEN_HEIGHT / 1.5f), this);
-				executable = temp;
-				executable.GetNextExecutable();
+				executable = (Executable)ObjectManager.SpawnObject(EXECUTABLE_PATH, new Vector2(GameManager.SCREEN_WIDTH / 2, GameManager.SCREEN_HEIGHT / 1.5f), this);
 			}
 		}
 
