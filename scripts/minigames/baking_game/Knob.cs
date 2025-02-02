@@ -34,10 +34,13 @@ namespace WGJ25
 
 		public void OnKnobDown()
 		{
-			knobButton.SetRotation(knobButton.Rotation + degrees);
+			if (!bakingGameManager.GameEnded)
+			{
+				knobButton.SetRotation(knobButton.Rotation + degrees);
 
-			timer.WaitTime = (float)(random.NextDouble() * (2f - 1.25f) + 1.25f);
-			timer.Start();
+				timer.WaitTime = (float)(random.NextDouble() * (2f - 1.25f) + 1.25f);
+				timer.Start();	
+			}
 		}
 
 		public void OnTimerTimeout()
