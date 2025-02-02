@@ -37,7 +37,6 @@ public partial class Guillotine : RigidBody2D
 			if(collision != null){
 				isFalling = false;
 				canBeDragged = true;
-				Modulate = new Color(1, 0, 0);
 			}
 		}
 		//If it is being dragged, check if the mouse has been released, at that point start falling 
@@ -53,10 +52,8 @@ public partial class Guillotine : RigidBody2D
 			}
 			//Resetting once the guillotine roughly reaches its original position.
 			if((this.GlobalPosition.Y - originalPosition.Y) <= 10){
-				Modulate = new Color(1, 1, 1);
 				canBeDragged = false;
 				isBeingDragged = false;
-				executable.GetNextExecutable();
 			}
 		}
 	}
@@ -68,7 +65,6 @@ public partial class Guillotine : RigidBody2D
 				GD.Print("You clicked on the guillotine");//For debugging
 				
 				//For now we just randomly change the colour of the sprite instead of loading a new one.
-				Modulate = new Color(0, 0, 1);
 				isFalling = true;
 		}
 		//If the mouse is being held and dragged, and it can be dragged, start dragging.

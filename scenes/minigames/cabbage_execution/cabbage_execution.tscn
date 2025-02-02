@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmj1fojrqyvi2"]
+[gd_scene load_steps=8 format=3 uid="uid://cmj1fojrqyvi2"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_o0s7j"]
 [ext_resource type="PackedScene" uid="uid://darfkejg3strr" path="res://scenes/minigames/cabbage_execution/executable.tscn" id="1_q1htf"]
 [ext_resource type="Script" path="res://scripts/minigames/cabbage_execution/CabbageExecutionManger.cs" id="2_l4fok"]
 [ext_resource type="PackedScene" uid="uid://dmf756rn0sndu" path="res://scenes/minigames/cabbage_execution/guillotine.tscn" id="2_macmb"]
-[ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="3_tywiv"]
+[ext_resource type="Texture2D" uid="uid://b0kmi1o3d3a47" path="res://art/minigames/cabbage/Basket.png" id="6_kyirh"]
+[ext_resource type="Texture2D" uid="uid://cn3480wnbbifb" path="res://art/minigames/cabbage/Frame.png" id="6_vigwc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x38n3"]
 size = Vector2(128, 32)
@@ -26,12 +27,11 @@ position = Vector2(479, 604)
 shape = SubResource("RectangleShape2D_x38n3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Board" index="1"]
-position = Vector2(0, 0.500002)
-scale = Vector2(0.916, 0.25)
-texture = ExtResource("3_tywiv")
+position = Vector2(0, -174)
+scale = Vector2(5, 10)
+texture = ExtResource("6_vigwc")
 
 [node name="Basket" type="StaticBody2D" parent="." index="4"]
-position = Vector2(479, 604)
 collision_layer = 3
 collision_mask = 3
 
@@ -39,6 +39,6 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_x38n3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Basket" index="1"]
-position = Vector2(0, 0.500002)
-scale = Vector2(0.916, 0.25)
-texture = ExtResource("3_tywiv")
+position = Vector2(0, -50)
+scale = Vector2(4, 4)
+texture = ExtResource("6_kyirh")
