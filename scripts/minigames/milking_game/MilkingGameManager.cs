@@ -11,8 +11,13 @@ namespace WGJ25
 		{
 			base._Ready();
 		}
-		
-		public void IncrementCount()
+
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+        }
+
+        public void IncrementCount()
 		{
 			score += 10;
 		}

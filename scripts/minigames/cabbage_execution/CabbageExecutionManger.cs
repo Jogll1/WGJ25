@@ -35,6 +35,7 @@ namespace WGJ25{
 
 		public override void _Process(double delta)
 		{
+			base._Process(delta);
 			//To avoid double-clicking that sometimes occurs when dragging the guillotine back up.
 			if(guillotine.CanBeDragged){
 				executable.CanBeClicked = false;

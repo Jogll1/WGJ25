@@ -26,6 +26,7 @@ public partial class Guillotine : RigidBody2D
 		canBeDragged = false;
 		isBeingDragged =false;
 		isFalling = false;
+		ProcessMode = Node.ProcessModeEnum.Pausable;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

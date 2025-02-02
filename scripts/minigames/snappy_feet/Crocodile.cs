@@ -33,6 +33,7 @@ namespace WGJ25{
 			open = GD.Load<Texture2D>("res://art/minigames/snappy/CrocodileOpen.png");
 			startPosition = GlobalPosition;
 			destination = new Vector2(GlobalPosition.X, GlobalPosition.Y - 80);
+			ProcessMode = Node.ProcessModeEnum.Pausable;
 		}
 
 		// Called every frame. 'delta' is the elapsed time since the previous frame.

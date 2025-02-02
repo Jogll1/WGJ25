@@ -15,6 +15,7 @@ namespace WGJ25{
         {
             collider = GetNode<CollisionShape2D>("CollisionShape2D");
             timer = GetNode<Timer>("Timer");
+            ProcessMode = Node.ProcessModeEnum.Pausable;
         }
 
         public override void _Input(InputEvent @event)

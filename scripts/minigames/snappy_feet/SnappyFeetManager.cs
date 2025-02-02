@@ -42,11 +42,13 @@ namespace WGJ25{
 			}
 
 			SetPopupText("Jump Over the Crocodiles!");
+			SetControlText("Press W to jump over the Crocodiles\nThe best time to jump is right as the crocodile is tensing");
 		}
 
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
 		public override void _Process(double delta)
 		{
+			base._Process(delta);
 			if(!player.IsDead && player.caught){
 				GD.Print("This should be doing something");
 				player.IsDead = true;

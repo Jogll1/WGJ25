@@ -17,6 +17,7 @@ public partial class Executable : RigidBody2D
         sprite = GetNode<Sprite2D>("Sprite2D");
 		cabbage = GD.Load<Texture2D>("res://art/minigames/cabbage/Cabbage.png");
 		noble = GD.Load<Texture2D>("res://art/minigames/cabbage/noble.png");
+		ProcessMode = Node.ProcessModeEnum.Pausable;
 		GetNextExecutable();
     }
 

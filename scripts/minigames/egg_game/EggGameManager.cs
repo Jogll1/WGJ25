@@ -20,8 +20,13 @@ namespace WGJ25
 
 			SetPopupText("Catch the eggs!");
 		}
-		
-		protected override void OnStopwatchTimeout()
+
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+        }
+
+        protected override void OnStopwatchTimeout()
 		{
 			base.OnStopwatchTimeout();
 			dinosaur.StopSpawning();
