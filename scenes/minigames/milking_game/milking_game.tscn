@@ -130,6 +130,9 @@ texture = ExtResource("4_bnqyg")
 position = Vector2(650, 85)
 scale = Vector2(1.4, 1)
 
+[node name="CRTFilter" parent="." index="8"]
+layer = 3
+
 [connection signal="button_down" from="teat/Button" to="teat" method="_on_button_button_down"]
 [connection signal="button_up" from="teat/Button" to="teat" method="_on_button_button_up"]
 [connection signal="button_down" from="teat2/Button" to="teat2" method="_on_button_button_down"]
