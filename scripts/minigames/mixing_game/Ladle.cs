@@ -12,6 +12,7 @@ namespace WGJ25 {
 		public override void _Ready()
 		{
 			sprite = GetNode<Sprite2D>("Sprite2D");
+			ProcessMode = Node.ProcessModeEnum.Pausable;
 		}
 
 		// Called every frame. 'delta' is the elapsed time since the previous frame.

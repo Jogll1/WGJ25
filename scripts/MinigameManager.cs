@@ -9,8 +9,10 @@ namespace WGJ25
 		
 		// References
 		private RichTextLabel popupText;
+		private RichTextLabel controlText;
 		private Timer stopwatchTimer;
 		private AnimationPlayer stopwatchAnim;
+		private bool displayControls = false;
 
 		// Use this as a reference for objects in the scene 
 		public bool GameEnded {get; private set;}
@@ -19,6 +21,7 @@ namespace WGJ25
 		{
 			gameManager = GetNode<GameManager>("/root/GameManager");
 			popupText = GetNode<RichTextLabel>("UI/UIParent/PopupTextParent/PopupText");
+			controlText = GetNode<RichTextLabel>("UI/UIParent/ControlTextParent/ControlText");
 			stopwatchTimer = GetNode<Timer>("UI/UIParent/StopwatchParent/StopwatchTimer");
 			stopwatchAnim = GetNode<AnimationPlayer>("UI/UIParent/StopwatchParent/StopwatchAnim");
 
@@ -29,9 +32,32 @@ namespace WGJ25
 			// Connect to popup text animation player
 			Callable cb = new(this, nameof(OnPopupTextAnimationFinished));
 			GetNode<AnimationPlayer>("UI/UIParent/PopupTextParent/PopupTextAnim").Connect("animation_finished", cb);
+
+			controlText.Hide();
+			ProcessMode = Node.ProcessModeEnum.Always;
 		}
 
-		private void OnPopupTextAnimationFinished(string animationName) 
+        public override void _Process(double delta)
+        {
+            if(Input.IsActionJustPressed("controls")){
+				if(!displayControls){
+					GetTree().Paused = true;
+					GD.Print("Displaying Controls");
+					displayControls = true;
+					controlText.Visible = true;
+					PauseStopwatch();
+				}
+				else {
+					GetTree().Paused = false;
+					GD.Print("Hiding Controls");
+					displayControls = false;
+					controlText.Visible = false;
+					UnpauseStopwatch();
+				}
+			}
+        }
+
+        private void OnPopupTextAnimationFinished(string animationName) 
 		{
 			// Called when the popup text animation finishes
 			if (animationName == "popup_text") 
@@ -57,6 +83,16 @@ namespace WGJ25
 			stopwatchAnim.Play("count");
 		}
 
+		protected void PauseStopwatch(){
+			stopwatchTimer.Paused = true;
+			stopwatchAnim.Pause();
+		}
+
+		protected void UnpauseStopwatch(){
+			stopwatchTimer.Paused = false;
+			stopwatchAnim.Play("count");
+		}
+
 		protected virtual void OnStopwatchTimeout() 
 		{
 			// Called when the game's timer runs out
@@ -69,6 +105,10 @@ namespace WGJ25
 		{
 			// Set the popup message text - this should be called in the _Ready() method of a MinigameManager subclass
 			popupText.Text = $"[center]{text}";
+		}
+
+		protected void SetControlText(string text){
+			controlText.Text = $"[center]{text}";
 		}
 
 		public double GetTimerTimeLeft() 
