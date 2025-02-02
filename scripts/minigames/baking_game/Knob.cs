@@ -5,7 +5,7 @@ namespace WGJ25
 {
 	public partial class Knob : TextureButton
 	{
-		private const float fifteenDegrees = Mathf.Pi / 6;
+		private const float degrees = Mathf.Pi / 4;
 
 		public override void _Ready()
 		{
@@ -19,7 +19,7 @@ namespace WGJ25
 
 		public void OnKnobDown()
 		{
-			SetRotation(Rotation + fifteenDegrees);
+			SetRotation(Rotation + degrees);
 		}
 	}
 }
