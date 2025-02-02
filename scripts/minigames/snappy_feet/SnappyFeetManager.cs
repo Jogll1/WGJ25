@@ -13,6 +13,7 @@ namespace WGJ25{
 		private Timer timer;
 		private Area2D end;
 		private bool endReached = false;
+		private bool ended = false;
 
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
@@ -66,7 +67,8 @@ namespace WGJ25{
 				// player.Sleeping = false;
 			}
 			//Ending the game if the player falls out of the map
-			if(player.GlobalPosition.Y > GameManager.SCREEN_HEIGHT + 32){
+			if(player.GlobalPosition.Y > GameManager.SCREEN_HEIGHT + 32 && !ended){
+				ended = true;
 				EndGame();
 			}
 		}
