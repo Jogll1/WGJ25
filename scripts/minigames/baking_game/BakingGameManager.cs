@@ -25,8 +25,8 @@ namespace WGJ25
 		protected override void OnStopwatchTimeout()
 		{
 			base.OnStopwatchTimeout();
-
-			// gameManager.LoadNextGame();
+			
+			EndWholeGame();
 		}
 	}
 }

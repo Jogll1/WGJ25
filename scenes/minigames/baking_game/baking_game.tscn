@@ -1,68 +1,63 @@
-[gd_scene load_steps=7 format=3 uid="uid://datts7e1y518s"]
+[gd_scene load_steps=6 format=3 uid="uid://datts7e1y518s"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_j4voa"]
 [ext_resource type="Script" path="res://scripts/minigames/baking_game/BakingGameManager.cs" id="2_1hjec"]
 [ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="3_4wlla"]
-[ext_resource type="Script" path="res://scripts/minigames/baking_game/Knob.cs" id="4_lhxvf"]
-[ext_resource type="Texture2D" uid="uid://bhequd45n1bty" path="res://art/minigames/baking/Knob.png" id="4_lqayk"]
-[ext_resource type="Texture2D" uid="uid://cox572hgmf3l" path="res://art/minigames/baking/KnobSettings.png" id="6_xs3i4"]
+[ext_resource type="Texture2D" uid="uid://b38tvf7qtnxop" path="res://art/ui/OvenBG.png" id="3_6hv7q"]
+[ext_resource type="PackedScene" uid="uid://bxaod6gwhonmn" path="res://scenes/minigames/baking_game/knob_parent.tscn" id="4_fsvmg"]
 
 [node name="BakingGame" instance=ExtResource("1_j4voa")]
 script = ExtResource("2_1hjec")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
+[node name="UI" parent="." index="0"]
+layer = 2
 
-[node name="UIParent" type="Control" parent="CanvasLayer" index="0"]
+[node name="UIParent2" type="Control" parent="UI" index="1"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="Oven" type="Sprite2D" parent="CanvasLayer/UIParent" index="0"]
-modulate = Color(0.427493, 0.427493, 0.427493, 1)
-z_index = -2
-position = Vector2(646, 541)
-scale = Vector2(25, 15)
+[node name="Sprite2D2" type="Sprite2D" parent="UI/UIParent2" index="0"]
+modulate = Color(0.385493, 0.385492, 0.385492, 1)
+z_index = -5
+position = Vector2(626, 638)
+scale = Vector2(34.025, 7.86)
 texture = ExtResource("3_4wlla")
 
-[node name="Knobs" type="Control" parent="CanvasLayer/UIParent" index="1"]
+[node name="Sprite2D" type="Sprite2D" parent="UI/UIParent2" index="1"]
+z_index = -5
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("3_6hv7q")
+
+[node name="Knobs" type="Control" parent="UI/UIParent2" index="2"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 244.0
-offset_top = 300.0
-offset_right = 284.0
-offset_bottom = 340.0
+offset_top = 356.0
+offset_right = 1280.0
+offset_bottom = 396.0
 
-[node name="KnobParent" type="Control" parent="CanvasLayer/UIParent/Knobs" index="0" groups=["Knob"]]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 70.0
-offset_top = 62.0
-offset_right = 102.0
-offset_bottom = 94.0
-pivot_offset = Vector2(16, 16)
-
-[node name="Knob" type="TextureButton" parent="CanvasLayer/UIParent/Knobs/KnobParent" index="0"]
-layout_mode = 0
-offset_right = 32.0
+[node name="KnobParent" parent="UI/UIParent2/Knobs" index="0" instance=ExtResource("4_fsvmg")]
+offset_left = 300.0
+offset_top = 0.0
+offset_right = 332.0
 offset_bottom = 32.0
-scale = Vector2(3, 3)
-pivot_offset = Vector2(16, 16)
-keep_pressed_outside = true
-texture_normal = ExtResource("4_lqayk")
-ignore_texture_size = true
-script = ExtResource("4_lhxvf")
 
-[node name="KnobSettings" type="Sprite2D" parent="CanvasLayer/UIParent/Knobs/KnobParent" index="1"]
-position = Vector2(16, 16)
-scale = Vector2(3, 3)
-texture = ExtResource("6_xs3i4")
+[node name="KnobParent2" parent="UI/UIParent2/Knobs" index="1" instance=ExtResource("4_fsvmg")]
+offset_left = 980.0
+offset_top = 0.0
+offset_right = 1012.0
+offset_bottom = 32.0
 
-[node name="Shadow" type="Sprite2D" parent="CanvasLayer/UIParent/Knobs/KnobParent" index="2"]
-modulate = Color(0, 0, 0, 0.478431)
-z_index = -1
-position = Vector2(19, 22)
-scale = Vector2(3, 3)
-texture = ExtResource("4_lqayk")
+[node name="KnobParent3" parent="UI/UIParent2/Knobs" index="2" instance=ExtResource("4_fsvmg")]
+offset_left = 526.0
+offset_top = 0.0
+offset_right = 558.0
+offset_bottom = 32.0
 
-[connection signal="button_down" from="CanvasLayer/UIParent/Knobs/KnobParent/Knob" to="CanvasLayer/UIParent/Knobs/KnobParent/Knob" method="OnKnobDown"]
+[node name="KnobParent4" parent="UI/UIParent2/Knobs" index="3" instance=ExtResource("4_fsvmg")]
+offset_left = 753.0
+offset_top = 0.0
+offset_right = 785.0
+offset_bottom = 32.0

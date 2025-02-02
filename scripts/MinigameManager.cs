@@ -38,10 +38,17 @@ namespace WGJ25
 			{
 				StartStopwatch();
 			}
+			else if(animationName == "popup_text_quick")
+			{
+				// load final scene
+				GD.Print("Done.");
+				gameManager.LoadEnding();
+			}
 		}
 
 		//Use to prematurely end the game if some failstate has been reached
-		protected void EndGame(){
+		protected void EndGame()
+		{
 			stopwatchTimer.Stop();
 			GameEnded = true;
 			gameManager.LoadNextGame();
@@ -74,6 +81,12 @@ namespace WGJ25
 		public double GetTimerTimeLeft() 
 		{
 			return stopwatchTimer.TimeLeft;
+		}
+
+		public void EndWholeGame()
+		{
+			popupText.Text =  $"[center]Finished!";
+			GetNode<AnimationPlayer>("UI/UIParent/PopupTextParent/PopupTextAnim").Play("popup_text_quick");
 		}
 	}
 }
