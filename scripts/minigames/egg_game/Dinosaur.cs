@@ -18,7 +18,7 @@ namespace WGJ25
 
 		public int EggsDropped { get; private set; }
 
-	    // References
+		// References
 		private GameManager gameManager;
 		private EggGameManager eggGameManager;
 		private Timer spawnTimer;

@@ -7,7 +7,7 @@ namespace WGJ25
 	public partial class GameManager : Node2D
 	{
 		// Array of all minigame scenes
-		private readonly string[] scenes = {"egg_game/egg_game", "cabbage_execution/cabbage_execution", "hunting_game/hunting_game", "snappy_feet/snappy_feet"};
+		private readonly string[] scenes = {"egg_game/egg_game", "cabbage_execution/cabbage_execution", "hunting_game/hunting_game", "snappy_feet/snappy_feet", "milking_game/milking_game"};
 		private string[] selectedScenes;
 
 		// References
@@ -41,11 +41,11 @@ namespace WGJ25
 
         public override void _Process(double delta) 
 		{
-			// To test, if space is pressed, load the next game
-			if (Input.IsActionJustPressed("Q")) 
-			{
-				LoadNextGame();
-			}
+			// // To test, if space is pressed, load the next game
+			// if (Input.IsActionJustPressed("Q")) 
+			// {
+			// 	LoadNextGame();
+			// }
 		}
 
 		private string[] SelectGames() 
@@ -101,6 +101,12 @@ namespace WGJ25
 			int index = random.Next(scenes.Length);
 			GD.Print($"Loading {scenes[index]}");
 			sceneTransition.ChangeScene($"res://scenes/minigames/{scenes[index]}.tscn");
+		}
+
+		public void LoadEnding()
+		{
+			GD.Print("Loading ending");
+			sceneTransition.ChangeScene($"res://scenes/end_scene/ending.tscn");
 		}
 	}
 }

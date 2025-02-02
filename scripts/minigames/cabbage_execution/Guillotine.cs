@@ -60,9 +60,9 @@ public partial class Guillotine : RigidBody2D
 	}
 
 	public override void _Input(InputEvent @event)
-    {
+	{
 		//If the sprite is clicked on, start falling.
-        if(Input.IsActionJustPressed("move_down") ){
+		if(Input.IsActionJustPressed("move_down") ){
 				GD.Print("You clicked on the guillotine");//For debugging
 				
 				//For now we just randomly change the colour of the sprite instead of loading a new one.
@@ -73,5 +73,5 @@ public partial class Guillotine : RigidBody2D
 				Input.IsActionPressed("move_up")) {
 				isBeingDragged = true;
 		}
-    }
+	}
 }

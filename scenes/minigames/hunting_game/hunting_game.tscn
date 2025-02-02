@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnsqbwlbpvvk1"]
+[gd_scene load_steps=12 format=3 uid="uid://dnsqbwlbpvvk1"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_0ats2"]
 [ext_resource type="Script" path="res://scripts/minigames/hunting_game/HuntingGameManager.cs" id="2_1nhnn"]
 [ext_resource type="Script" path="res://scripts/minigames/hunting_game/Hunter.cs" id="3_8hnw2"]
 [ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="3_gojru"]
 [ext_resource type="Texture2D" uid="uid://cniahl5r5ubmx" path="res://art/minigames/hunting/Club.png" id="5_1p7il"]
+[ext_resource type="Texture2D" uid="uid://ds6ces7c4x28u" path="res://art/minigames/hunting/HuntingBG.png" id="6_1rnvl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uitd1"]
 size = Vector2(48, 48)
@@ -119,6 +120,12 @@ shape = SubResource("RectangleShape2D_78bic")
 libraries = {
 "": SubResource("AnimationLibrary_j3hf0")
 }
+
+[node name="BG" type="Sprite2D" parent="." index="2"]
+z_index = -5
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("6_1rnvl")
 
 [connection signal="timeout" from="Hunter/Timer" to="Hunter" method="OnTimerTimeout"]
 [connection signal="body_entered" from="Hunter/ClubPivot/ClubAnchor/ClubParent" to="Hunter" method="OnBodyEntered"]

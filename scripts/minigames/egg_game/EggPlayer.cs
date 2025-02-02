@@ -12,12 +12,12 @@ namespace WGJ25
 
 		public int EggsCaught { get; private set; }
 
-        public override void _Ready()
-        {
-            eggGameManager = (EggGameManager)GetParent();
-        }
+		public override void _Ready()
+		{
+			eggGameManager = (EggGameManager)GetParent();
+		}
 
-        public override void _Process(double delta)
+		public override void _Process(double delta)
 		{
 			if(!eggGameManager.GameEnded) 
 			{
