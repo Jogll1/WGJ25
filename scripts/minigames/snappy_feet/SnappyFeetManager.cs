@@ -51,9 +51,13 @@ namespace WGJ25{
 			for(int i = 0; i < croc.Length; i++){
 				if(croc[i].ShouldJump) {
 					player.collider.Disabled = true;
-					player.IsDead = true;
-					player.Sleeping = true;
+					if(!player.caught)player.Sleeping = true;
 				}
+			}
+			if(!player.IsDead && player.caught){
+				GD.Print("This should be doing something");
+				player.IsDead = true;
+				player.ApplyImpulse(new Vector2(0, -200));
 			}
 			//Pause the timer so we have no more croc state changes when the player dies.
 			if(player.IsDead){
