@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://v486becq2fe4"]
+[gd_scene load_steps=4 format=3 uid="uid://v486becq2fe4"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_aq78c"]
 [ext_resource type="PackedScene" uid="uid://2wc5na3n7uoq" path="res://scenes/ui/scene_transition.tscn" id="2_yhe4p"]
+[ext_resource type="AudioStream" uid="uid://bhvy3tnq73xke" path="res://audio/General music.wav" id="3_5gnq2"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_aq78c")
 
 [node name="SceneTransition" parent="." instance=ExtResource("2_yhe4p")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5gnq2")
+autoplay = true

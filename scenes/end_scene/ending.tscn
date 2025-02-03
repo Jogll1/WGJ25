@@ -1,3 +1,274 @@
-[gd_scene format=3 uid="uid://8me42ftk0xdg"]
+[gd_scene load_steps=10 format=3 uid="uid://8me42ftk0xdg"]
+
+[ext_resource type="Texture2D" uid="uid://cgaie1slg2xnc" path="res://art/minigames/Pie.png" id="1_7en4n"]
+[ext_resource type="Script" path="res://scripts/minigames/Ending.cs" id="1_84ysw"]
+[ext_resource type="Texture2D" uid="uid://db3c1plng6e40" path="res://art/star.png" id="2_23b6u"]
+[ext_resource type="PackedScene" uid="uid://dp5tmaw3spdpr" path="res://scenes/ui/crt_filter.tscn" id="3_6howv"]
+[ext_resource type="Theme" uid="uid://cy5t81wiiv218" path="res://art/general.tres" id="3_87s3e"]
+[ext_resource type="Texture2D" uid="uid://cw123bd5pamc1" path="res://art/ui/MenuBG.png" id="6_3smng"]
+
+[sub_resource type="Animation" id="Animation_fry2w"]
+resource_name = "effect"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Star1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.53333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Star1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.53333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 40), Vector2(42, 42), Vector2(40, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Star2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.53333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(27, 27), Vector2(25, 25), Vector2(27, 27)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Star2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.53333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.23918, -1.90241, -5.07891]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pie:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.733333, 1.53333, 2.43333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(5.5, 5.5), Vector2(5, 5), Vector2(5.5, 5.5), Vector2(5, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_74u46"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Star1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Star1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(42, 42)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Star2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(27, 27)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Star2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.23918]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pie:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nseng"]
+_data = {
+"RESET": SubResource("Animation_74u46"),
+"effect": SubResource("Animation_fry2w")
+}
 
 [node name="Ending" type="Node2D"]
+script = ExtResource("1_84ysw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 730.0
+
+[node name="Pie" type="Sprite2D" parent="Control"]
+position = Vector2(640, 264)
+scale = Vector2(5, 5)
+texture = ExtResource("1_7en4n")
+
+[node name="Shadow" type="Sprite2D" parent="Control/Pie"]
+modulate = Color(0, 0, 0, 0.384314)
+z_index = -1
+position = Vector2(1, 2)
+texture = ExtResource("1_7en4n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_nseng")
+}
+autoplay = "effect"
+
+[node name="Star1" type="Sprite2D" parent="Control"]
+visible = false
+modulate = Color(1, 1, 0.25098, 0.282353)
+z_index = -2
+position = Vector2(643, 321)
+scale = Vector2(42, 42)
+texture = ExtResource("2_23b6u")
+
+[node name="Star2" type="Sprite2D" parent="Control"]
+visible = false
+modulate = Color(1, 0.454902, 0.25098, 0.282353)
+z_index = -1
+position = Vector2(665, 345)
+rotation = 1.23918
+scale = Vector2(27, 27)
+texture = ExtResource("2_23b6u")
+
+[node name="Menu" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -84.0
+offset_right = -13.0
+offset_bottom = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_87s3e")
+theme_override_font_sizes/font_size = 40
+keep_pressed_outside = true
+text = "Menu
+"
+flat = true
+
+[node name="PopupTextParent" type="Control" parent="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 9.0
+offset_right = 3.0
+offset_bottom = 9.0
+mouse_filter = 2
+
+[node name="PopupText" type="RichTextLabel" parent="Control/PopupTextParent"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 37.0
+offset_right = 1280.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 55)
+mouse_filter = 1
+theme = ExtResource("3_87s3e")
+bbcode_enabled = true
+text = "[center]You win!"
+fit_content = true
+scroll_active = false
+
+[node name="CRT" parent="." instance=ExtResource("3_6howv")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -101
+scroll_ignore_camera_zoom = true
+
+[node name="BG" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_3smng")
+centered = false
+hframes = 3
+
+[node name="Middle" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Middle"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_3smng")
+centered = false
+hframes = 3
+frame = 1
+
+[node name="FG" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.75, 1.75)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/FG"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_3smng")
+centered = false
+hframes = 3
+frame = 2
+
+[connection signal="pressed" from="Control/Menu" to="." method="OnMenuPressed"]

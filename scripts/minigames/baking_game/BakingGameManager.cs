@@ -15,6 +15,7 @@ namespace WGJ25
 
 			knobs = GetTree().GetNodesInGroup("Knob").Cast<Knob>().ToList();
 			SetPopupText("Bake!");
+			SetControlText("Click the knobs to turn them.");
 		}
 
 		public override void _Process(double delta)

@@ -18,7 +18,10 @@ texture = ExtResource("3_7l0pv")
 [node name="UIParent" parent="UI" index="0"]
 mouse_filter = 2
 
-[node name="PopupTextParent" parent="UI/UIParent" index="0"]
+[node name="ControlTextParent" parent="UI/UIParent" index="0"]
+mouse_filter = 2
+
+[node name="PopupTextParent" parent="UI/UIParent" index="1"]
 offset_left = 3.0
 offset_top = 9.0
 offset_right = 1283.0
@@ -28,7 +31,7 @@ mouse_filter = 2
 [node name="PopupText" parent="UI/UIParent/PopupTextParent" index="0"]
 text = "[center]Milk the cow!"
 
-[node name="StopwatchParent" parent="UI/UIParent" index="1"]
+[node name="StopwatchParent" parent="UI/UIParent" index="2"]
 mouse_filter = 2
 
 [node name="teat" type="Sprite2D" parent="." index="2" node_paths=PackedStringArray("manager_node")]

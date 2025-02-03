@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_0ats2"]
 [ext_resource type="Script" path="res://scripts/minigames/hunting_game/HuntingGameManager.cs" id="2_1nhnn"]
 [ext_resource type="Script" path="res://scripts/minigames/hunting_game/Hunter.cs" id="3_8hnw2"]
-[ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="3_gojru"]
+[ext_resource type="Texture2D" uid="uid://bynq44ma7xkmq" path="res://art/minigames/hunting/caveman.png" id="4_4pttp"]
 [ext_resource type="Texture2D" uid="uid://cniahl5r5ubmx" path="res://art/minigames/hunting/Club.png" id="5_1p7il"]
 [ext_resource type="Texture2D" uid="uid://ds6ces7c4x28u" path="res://art/minigames/hunting/HuntingBG.png" id="6_1rnvl"]
 
@@ -83,8 +83,9 @@ script = ExtResource("3_8hnw2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hunter" index="0"]
 z_index = 3
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_gojru")
+position = Vector2(1, -14)
+scale = Vector2(3, 3)
+texture = ExtResource("4_4pttp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hunter" index="1"]
 shape = SubResource("RectangleShape2D_uitd1")

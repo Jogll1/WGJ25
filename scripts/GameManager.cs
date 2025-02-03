@@ -22,9 +22,12 @@ namespace WGJ25
 
 		private int[] scores = new int[5];
 
+		private AudioStreamPlayer audioStreamPlayer;
+
 		public override void _EnterTree()
 		{
 			sceneTransition = GetNode<SceneTransition>("SceneTransition");
+			audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		}
 
         public override void _Ready()
@@ -107,6 +110,17 @@ namespace WGJ25
 		{
 			GD.Print("Loading ending");
 			sceneTransition.ChangeScene($"res://scenes/end_scene/ending.tscn");
+		}
+
+		public void Home()
+		{
+			sceneTransition.ChangeScene($"res://scenes/main.tscn");
+		}
+		
+		public void PlayVictoryMusic()
+		{
+			audioStreamPlayer.Stream = GD.Load<AudioStream>("res://audio/Victory fanfare.wav");
+			audioStreamPlayer.Play();
 		}
 	}
 }
