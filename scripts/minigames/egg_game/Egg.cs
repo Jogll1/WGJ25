@@ -17,6 +17,8 @@ namespace WGJ25
 				animatedSprite2D.Scale.X * (random.Next(0, 2) == 0 ? -1 : 1),
 				animatedSprite2D.Scale.Y
 			);
+
+			ProcessMode = Node.ProcessModeEnum.Pausable;
 		}
 
 		private void OnBodyEntered(Node body)

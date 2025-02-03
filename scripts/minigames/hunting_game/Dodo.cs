@@ -24,6 +24,8 @@ namespace WGJ25
 			RandomDirection();
 
 			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("default");
+
+			ProcessMode = Node.ProcessModeEnum.Pausable;
 		}
 
 		public override void _PhysicsProcess(double delta)

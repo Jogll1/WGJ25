@@ -19,6 +19,7 @@ namespace WGJ25
 			if (player != null) player.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, GameManager.SCREEN_HEIGHT);
 
 			SetPopupText("Catch the eggs!");
+			SetControlText("Press A and D to move left and right.");
 		}
 
         public override void _Process(double delta)

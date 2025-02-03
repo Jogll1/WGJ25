@@ -15,6 +15,8 @@ namespace WGJ25
 		public override void _Ready()
 		{
 			eggGameManager = (EggGameManager)GetParent();
+
+			ProcessMode = Node.ProcessModeEnum.Pausable;
 		}
 
 		public override void _Process(double delta)

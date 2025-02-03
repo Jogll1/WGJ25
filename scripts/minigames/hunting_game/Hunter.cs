@@ -25,6 +25,8 @@ namespace WGJ25
             huntingGameManager = (HuntingGameManager)GetParent();
 			anim = GetNode<AnimationPlayer>("AnimationPlayer");
 			timer = GetNode<Timer>("Timer");
+
+			ProcessMode = Node.ProcessModeEnum.Pausable;
         }
 
         public override void _Process(double delta)
