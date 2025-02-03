@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cy5t81wiiv218" path="res://art/general.tres" id="2_futol"]
 [ext_resource type="Texture2D" uid="uid://b4yaydy3h6qcc" path="res://art/ui/stopwatch.png" id="2_lvrbe"]
-[ext_resource type="PackedScene" uid="uid://dp5tmaw3spdpr" path="res://scenes/ui/crt_filter.tscn" id="3_bka51"]
+[ext_resource type="PackedScene" path="res://scenes/ui/crt_filter.tscn" id="3_bka51"]
 
 [sub_resource type="Animation" id="Animation_vw2oh"]
 length = 0.001
@@ -210,6 +210,7 @@ offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(640, 55)
+mouse_filter = 2
 theme = ExtResource("2_futol")
 bbcode_enabled = true
 text = "[center]GAME_CONTROLS"
