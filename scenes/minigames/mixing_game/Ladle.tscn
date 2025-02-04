@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bta6vubhdeut2"]
 
-[ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="1_7ecm6"]
 [ext_resource type="Script" path="res://scripts/minigames/mixing_game/Ladle.cs" id="1_xdgtn"]
+[ext_resource type="Texture2D" uid="uid://csudxpu5tj6td" path="res://art/minigames/mixing/Ladle.png" id="2_2gjgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n7yr"]
 size = Vector2(32, 128)
@@ -16,8 +16,9 @@ script = ExtResource("1_xdgtn")
 shape = SubResource("RectangleShape2D_7n7yr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 1)
-texture = ExtResource("1_7ecm6")
+position = Vector2(0, -30)
+scale = Vector2(4, 4)
+texture = ExtResource("2_2gjgb")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Ladle"]]
 position = Vector2(0, 35)

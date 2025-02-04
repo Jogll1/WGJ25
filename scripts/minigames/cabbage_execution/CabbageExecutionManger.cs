@@ -31,6 +31,7 @@ namespace WGJ25{
 			if(basket != null) basket.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, board.GlobalPosition.Y + 128);
 
 			SetPopupText("Slice the Cabbage!");
+			SetControlText("Press W to drop the Guillotine. S to Bring it back up\n Press A/D to cycle through the executables");
 		}
 
 		public override void _Process(double delta)

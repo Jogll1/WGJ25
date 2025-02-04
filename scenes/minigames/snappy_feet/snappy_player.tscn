@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxp64hrhiyo2x"]
 
 [ext_resource type="Script" path="res://scripts/minigames/snappy_feet/SnappyPlayer.cs" id="1_1lv3p"]
-[ext_resource type="Texture2D" uid="uid://dcknv1rfvel7" path="res://icon.svg" id="1_5epqm"]
+[ext_resource type="Texture2D" uid="uid://it2lo48hsf3j" path="res://art/minigames/snappy/SnappyPlayer.png" id="2_oymss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqjtp"]
 size = Vector2(32, 64)
@@ -24,8 +24,8 @@ script = ExtResource("1_1lv3p")
 shape = SubResource("RectangleShape2D_nqjtp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.5)
-texture = ExtResource("1_5epqm")
+scale = Vector2(2, 2)
+texture = ExtResource("2_oymss")
 
 [node name="GroundChecker" type="Area2D" parent="." groups=["player"]]
 position = Vector2(0, 32)

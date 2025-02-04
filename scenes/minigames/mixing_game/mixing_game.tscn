@@ -1,18 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://mqgljun8827n"]
+[gd_scene load_steps=9 format=3 uid="uid://mqgljun8827n"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_cg7md"]
 [ext_resource type="Script" path="res://scripts/minigames/mixing_game/MixingGameManager.cs" id="2_bnxw6"]
-[ext_resource type="Texture2D" uid="uid://b3addy3swrybl" path="res://art/minigames/bowl.png" id="3_88s1d"]
+[ext_resource type="Texture2D" uid="uid://b4iwm2mhy6aer" path="res://art/minigames/mixing/Bowl.png" id="3_jeml7"]
 [ext_resource type="PackedScene" uid="uid://bta6vubhdeut2" path="res://scenes/minigames/mixing_game/Ladle.tscn" id="4_nt26t"]
+[ext_resource type="Texture2D" uid="uid://dduf45e7cm21d" path="res://art/minigames/mixing/MixingBackground.png" id="5_e7biw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df1lm"]
-size = Vector2(7000, 300)
+size = Vector2(7000, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lonm0"]
-size = Vector2(2000, 300)
+size = Vector2(2000, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncqae"]
-size = Vector2(2000, 300)
+size = Vector2(2000, 100)
 
 [node name="MixingGame" instance=ExtResource("1_cg7md")]
 script = ExtResource("2_bnxw6")
@@ -25,23 +26,29 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="BowlSprite" type="Sprite2D" parent="Bowl" index="0"]
-position = Vector2(0, -300)
-rotation = 0.0698132
-texture = ExtResource("3_88s1d")
+position = Vector2(0, -175)
+scale = Vector2(60, 60)
+texture = ExtResource("3_jeml7")
 
 [node name="Bottom" type="CollisionShape2D" parent="Bowl" index="1"]
-position = Vector2(0, 650)
+position = Vector2(0, 700)
 shape = SubResource("RectangleShape2D_df1lm")
 
 [node name="Left" type="CollisionShape2D" parent="Bowl" index="2"]
-position = Vector2(-1480, -35)
-rotation = 1.0472
+position = Vector2(-1100, -100)
+rotation = 1.22173
 shape = SubResource("RectangleShape2D_lonm0")
 
 [node name="Right" type="CollisionShape2D" parent="Bowl" index="3"]
-position = Vector2(1480, -35)
-rotation = 2.0944
+position = Vector2(1100, -100)
+rotation = 1.91986
 shape = SubResource("RectangleShape2D_ncqae")
 
 [node name="Ladle" parent="." index="2" instance=ExtResource("4_nt26t")]
 position = Vector2(597, 324)
+
+[node name="Background" type="Sprite2D" parent="." index="4"]
+z_index = -30
+position = Vector2(640, 360)
+scale = Vector2(20, 20)
+texture = ExtResource("5_e7biw")
