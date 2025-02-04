@@ -33,6 +33,8 @@ namespace WGJ25
 			spawnTimer = GetNode<Timer>("SpawnTimer");
 			spawnPos = GetNode<Node2D>("Sprite2D/SpawnPos");
 			sprite = GetNode<Sprite2D>("Sprite2D");
+
+			ProcessMode = Node.ProcessModeEnum.Pausable;
 		}
 
 		public override void _Process(double delta)

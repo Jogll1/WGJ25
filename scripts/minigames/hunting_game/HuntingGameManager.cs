@@ -19,6 +19,7 @@ namespace WGJ25
 			if (hunter != null) hunter.GlobalPosition = new Vector2(GameManager.SCREEN_WIDTH / 2, GameManager.SCREEN_HEIGHT / 2);
 
 			SetPopupText("Club the dodos!");
+			SetControlText("Use WASD to move and space to hit.");
 
 			// Spawn the initial dodos
 			Random random = new();
