@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmj1fojrqyvi2"]
+[gd_scene load_steps=10 format=3 uid="uid://cmj1fojrqyvi2"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_o0s7j"]
 [ext_resource type="PackedScene" uid="uid://darfkejg3strr" path="res://scenes/minigames/cabbage_execution/executable.tscn" id="1_q1htf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0kmi1o3d3a47" path="res://art/minigames/cabbage/Basket.png" id="6_kyirh"]
 [ext_resource type="Texture2D" uid="uid://cn3480wnbbifb" path="res://art/minigames/cabbage/Frame.png" id="6_vigwc"]
 [ext_resource type="Texture2D" uid="uid://d11cu7mdeqtk0" path="res://art/minigames/cabbage/CabbageBackground.png" id="7_7wh62"]
+[ext_resource type="Texture2D" uid="uid://878n2jjcuw1m" path="res://art/Instructions/CabbageInstructions.png" id="8_8y0ti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x38n3"]
 size = Vector2(128, 32)
@@ -49,3 +50,6 @@ z_index = -30
 position = Vector2(640, 360)
 scale = Vector2(20, 20)
 texture = ExtResource("7_7wh62")
+
+[node name="Instructions" parent="." index="8"]
+texture = ExtResource("8_8y0ti")

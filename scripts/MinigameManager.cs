@@ -11,7 +11,9 @@ namespace WGJ25
 		private RichTextLabel popupText;
 		private RichTextLabel controlText;
 		private Timer stopwatchTimer;
+		private Timer instructionTimer;
 		private AnimationPlayer stopwatchAnim;
+		private Sprite2D instructions;
 		private bool displayControls = false;
 
 		// Use this as a reference for objects in the scene 
@@ -24,6 +26,8 @@ namespace WGJ25
 			controlText = GetNode<RichTextLabel>("UI/UIParent/ControlTextParent/ControlText");
 			stopwatchTimer = GetNode<Timer>("UI/UIParent/StopwatchParent/StopwatchTimer");
 			stopwatchAnim = GetNode<AnimationPlayer>("UI/UIParent/StopwatchParent/StopwatchAnim");
+			instructionTimer = GetNode<Timer>("InstructionTimer");
+			instructions = GetNode<Sprite2D>("Instructions");
 
 			// Connect to the stopwatch timer's timeout signal
 			Callable ca = new(this, nameof(OnStopwatchTimeout));
@@ -32,6 +36,9 @@ namespace WGJ25
 			// Connect to popup text animation player
 			Callable cb = new(this, nameof(OnPopupTextAnimationFinished));
 			GetNode<AnimationPlayer>("UI/UIParent/PopupTextParent/PopupTextAnim").Connect("animation_finished", cb);
+
+			Callable ci = new(this, nameof(OnInstructionTimerTimeout));
+			instructionTimer.Connect("timeout", ci);
 
 			controlText.Hide();
 			ProcessMode = Node.ProcessModeEnum.Always;
@@ -106,6 +113,11 @@ namespace WGJ25
 			stopwatchTimer.Stop();
 			GameEnded = true;
 			GD.Print("Game finished!");
+		}
+
+		protected void OnInstructionTimerTimeout(){
+			GD.Print("Instructions Hidden");
+			instructions.Hide();
 		}
 		
 		protected void SetPopupText(string text) 
