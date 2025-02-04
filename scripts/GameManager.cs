@@ -86,6 +86,10 @@ namespace WGJ25
 			return selected;
 		}
 
+		public string getCurrentGame(){
+			return selectedScenes[nextGame-1].Split("/")[0];
+		}
+
 		public void LoadNextGame() 
 		{
 			if (nextGame < GAMES_AMOUNT)
