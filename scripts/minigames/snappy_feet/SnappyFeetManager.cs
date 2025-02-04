@@ -14,6 +14,7 @@ namespace WGJ25{
 		private Area2D end;
 		private bool endReached = false;
 		private bool ended = false;
+		private Sprite2D water;
 
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
@@ -30,6 +31,9 @@ namespace WGJ25{
 
 			end = GetNode<Area2D>("End");
 			if(end != null) end.GlobalPosition = new Vector2(rightShore.GlobalPosition.X, rightShore.GlobalPosition.Y - 64);
+
+			water = GetNode<Sprite2D>("Water");
+			if(water != null) water.GlobalPosition = new Vector2(496, 700);
 
 			timer = GetNode<Timer>("Timer");
 
