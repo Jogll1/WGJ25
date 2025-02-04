@@ -51,6 +51,10 @@ namespace WGJ25
 			// }
 		}
 
+		public void loadLastGame(){
+			sceneTransition.ChangeScene($"res://scenes/minigames/baking_game/baking_game.tscn");
+		}
+
 		private string[] SelectGames() 
 		{
 			// Select the five games that will be played this turn
@@ -94,7 +98,7 @@ namespace WGJ25
 			else 
 			{
 				// Load mixing game
-				sceneTransition.ChangeScene($"res://scenes/minigames/baking_game/baking_game.tscn");
+				sceneTransition.ChangeScene($"res://scenes/minigames/mixing_game/mixing_game.tscn");
 			}
 		}
 
