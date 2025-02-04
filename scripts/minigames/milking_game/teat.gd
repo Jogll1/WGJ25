@@ -9,6 +9,9 @@ var of = Vector2(0,0)
 
 var snap = 25
 var maxY = 0
+func _ready():
+	process_mode = Node.PROCESS_MODE_PAUSABLE;
+
 func _process(_delta):
 	if reset:
 		position = Vector2(position.x, position.y - 0.8)

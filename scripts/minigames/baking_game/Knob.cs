@@ -25,6 +25,8 @@ namespace WGJ25
 
 			targetAngle = random.Next(3, 7) * degrees;
 			knobSettings.SetRotation(targetAngle);
+
+			ProcessMode = Node.ProcessModeEnum.Pausable;
 		}
 
 		public override void _Process(double delta)

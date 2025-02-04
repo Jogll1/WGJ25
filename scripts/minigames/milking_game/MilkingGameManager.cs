@@ -10,6 +10,8 @@ namespace WGJ25
 		public override void _Ready()
 		{
 			base._Ready();
+
+			SetControlText("Pull on the teats to milk the cow.");
 		}
 
         public override void _Process(double delta)

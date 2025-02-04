@@ -20,7 +20,7 @@ namespace WGJ25
 
 		public override void _Process(double delta)
 		{
-
+			base._Process(delta);
 		}
 
 		protected override void OnStopwatchTimeout()
