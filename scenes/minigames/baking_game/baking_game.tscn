@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwexbmq15p8wa"]
+[gd_scene load_steps=6 format=3 uid="uid://cwexbmq15p8wa"]
 
 [ext_resource type="PackedScene" uid="uid://mc6ixurg3r01" path="res://scenes/minigames/minigame.tscn" id="1_j4voa"]
 [ext_resource type="Script" path="res://scripts/minigames/baking_game/BakingGameManager.cs" id="2_1hjec"]
 [ext_resource type="Texture2D" uid="uid://cmoy1tmbgyg0u" path="res://art/square.png" id="3_4wlla"]
 [ext_resource type="Texture2D" uid="uid://b38tvf7qtnxop" path="res://art/ui/OvenBG.png" id="3_6hv7q"]
 [ext_resource type="PackedScene" path="res://scenes/minigames/baking_game/knob_parent.tscn" id="4_fsvmg"]
-[ext_resource type="Texture2D" uid="uid://ce21kkto145dn" path="res://art/Instructions/BakeInstructions.png" id="6_i8ncc"]
 
 [node name="BakingGame" instance=ExtResource("1_j4voa")]
 script = ExtResource("2_1hjec")
@@ -65,6 +64,3 @@ offset_bottom = 32.0
 
 [node name="CRTFilter" parent="." index="1"]
 layer = 3
-
-[node name="Instructions" parent="." index="3"]
-texture = ExtResource("6_i8ncc")
