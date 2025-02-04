@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6o0g68k6q5vb"
-path="res://.godot/imported/Cabbage.png-728bab397a8998ffc9b5b9553a128dc7.ctex"
+uid="uid://it2lo48hsf3j"
+path="res://.godot/imported/SnappyPlayer.png-9bd2387b26491b80bbb75c594bfa41b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/minigames/cabbage/Cabbage.png"
-dest_files=["res://.godot/imported/Cabbage.png-728bab397a8998ffc9b5b9553a128dc7.ctex"]
+source_file="res://art/minigames/snappy/SnappyPlayer.png"
+dest_files=["res://.godot/imported/SnappyPlayer.png-9bd2387b26491b80bbb75c594bfa41b6.ctex"]
 
 [params]
 
