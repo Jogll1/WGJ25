@@ -33,7 +33,7 @@ namespace WGJ25
 		protected override void OnStopwatchTimeout()
 		{
 			base.OnStopwatchTimeout();
-
+			gameManager.loadLastGame();
 			// gameManager.LoadNextGame();
 		}
 	}
